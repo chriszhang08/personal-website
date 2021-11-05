@@ -2,14 +2,13 @@ import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
 import { Footer } from "../components/footer/footer";
-import Header from "../components/header/header";
+import Navbar from "../components/navbar/navbar";
 import { ChakraProvider } from "@chakra-ui/react";
 
 export default function Home() {
   return (
     <ChakraProvider>
       <div>
-        <Header />
         <Layout home>
           <Head>
             <title>{siteTitle}</title>
