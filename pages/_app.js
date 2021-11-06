@@ -6,6 +6,7 @@ export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider>
       <Navbar />
+      {/* fix link css */}
       <Component {...pageProps} />
     </ChakraProvider>
   );

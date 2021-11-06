@@ -42,7 +42,7 @@ const MenuItem = ({ children, isLast, to = "/" }) => {
 };
 
 // create menulinks component
-const MenuLinks = ({ children, isLast, ...rest }) => {
+const MenuLinks = ({ isOpen, children, isLast, ...rest }) => {
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
@@ -50,15 +50,17 @@ const MenuLinks = ({ children, isLast, ...rest }) => {
     >
       <Stack
         spacing={8}
-        align="center"
+        align="flex-end"
         justify={["center", "space-between", "flex-end", "flex-end"]}
-        direction={["column", "row", "row", "row"]}
+        direction={["row", "row", "row", "row"]}
         pt={[4, 4, 0, 0]}
-        // flexGrow={1}
-        // padding={6}
+        flexGrow={1}
+        padding={6}
       >
+        <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/projects">Projects</MenuItem>
         <MenuItem to="/save-the-world">Save The World</MenuItem>
+        <MenuItem to="/bio">About Me</MenuItem>
       </Stack>
     </Box>
   );
@@ -77,34 +79,21 @@ const Navbar = (props) => {
       align="center"
       justify="space-between"
       wrap="wrap"
+      position="fixed"
       p={8}
       mb={8}
       w="100%"
-      // color="white"
+      color="black"
+      bg="aqua"
       // position="fixed"
     >
-      <Flex>
-        {/* can put logo here */}
-        <Box align="center" mr={5}>
-          <Heading as="h1" size="lg" letterSpacing={"tighter"}>
-            Logo
-          </Heading>
-        </Box>
-        <Box
-          display={{ base: isOpen ? "block" : "none", md: "block" }}
-          mt={{ base: 4, md: 0 }}
-        >
-          <Flex
-            align="center"
-            justify={["center", "space-between", "flex-end", "flex-end"]}
-            direction={["column", "row", "row", "row"]}
-            pt={[4, 4, 0, 0]}
-          >
-            <MenuItem to="/projects">Projects</MenuItem>
-            <MenuItem to="/save-the-world">Save The World</MenuItem>
-          </Flex>
-        </Box>
-      </Flex>
+      {/* can put logo here */}
+      <Box align="center" mr={5}>
+        <Heading as="h1" size="lg" letterSpacing={"tighter"}>
+          Logo
+        </Heading>
+      </Box>
+      <MenuLinks isOpen={isOpen} />
       {/* <Box
         display={{ base: isOpen ? "block" : "none", md: "block" }}
         mt={{ base: 4, md: 0 }}
