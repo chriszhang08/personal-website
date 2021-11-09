@@ -1,36 +1,29 @@
-import Head from "next/head";
-import Layout, { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
-import { Footer } from "../components/footer/footer";
-import { ChakraProvider } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  Text,
+  Box,
+  Stack,
+  Heading,
+  Flex,
+} from "@chakra-ui/react";
+import { Fragment } from "react";
 
 export default function Home() {
   return (
-    <div>
-      <Layout home>
-        <Head>
-          <title>{siteTitle}</title>
-        </Head>
-        <section className={utilStyles.headingMd}>
-          <p>Hi! My name is Chris Zhang. </p>
-          <p>
+    <Fragment>
+      <Flex w="100%" justify="center" direction="row">
+        <Stack direction={"column"} w={["90%", "80%", "65%", "50%", "40%"]}>
+          <Heading>Hi! My name is Chris Zhang</Heading>
+          <Text>
             I love helping people I love helping people I love helping people I
             love helping people I love helping people I love helping people I
             love helping people I love helping people I love helping people I
             love helping people I love helping people I love helping people I
-            love helping people I love helping people I love helping people I
-            love helping people I love helping people I love helping people I
-            love helping people I love helping people I love helping people I
-            love helping people I love helping people I love helping people I
-            love helping people I love helping people I love helping people I
-            love helping people I love helping people I love helping people I
-            love helping people I love helping people I love helping people I
-            love helping people I love helping people{" "}
-            <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-          </p>
-        </section>
-      </Layout>
-      <Footer />
-    </div>
+            love helping people I love helping people
+          </Text>
+        </Stack>
+      </Flex>
+    </Fragment>
   );
 }

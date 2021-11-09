@@ -50,9 +50,9 @@ const MenuLinks = ({ isOpen, children, isLast, ...rest }) => {
     >
       <Stack
         spacing={8}
-        align="flex-end"
+        align="flex"
         justify={["center", "space-between", "flex-end", "flex-end"]}
-        direction={["row", "row", "row", "row"]}
+        direction={"row"}
         pt={[4, 4, 0, 0]}
         flexGrow={1}
         padding={6}
@@ -75,17 +75,16 @@ const Navbar = (props) => {
 
   return (
     <Flex
-      as="nav"
       align="center"
       justify="space-between"
       wrap="wrap"
-      position="fixed"
+      position="sticky"
+      top={0}
       p={8}
       mb={8}
       w="100%"
       color="black"
       bg="aqua"
-      // position="fixed"
     >
       {/* can put logo here */}
       <Box align="center" mr={5}>

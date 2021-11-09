@@ -5,7 +5,7 @@ import { LinkGrid } from "./linkGrid";
 import { SocialMediaLinks } from "./socialMediaLinks.jsx";
 import colors from "../../styles/config/colors";
 
-export const Footer = () => (
+const Footer = () => (
   <Box
     as="footer"
     role="contentinfo"
@@ -33,3 +33,5 @@ export const Footer = () => (
     </Stack>
   </Box>
 );
+
+export default Footer;

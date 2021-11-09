@@ -1,17 +1,17 @@
 import Head from "next/head";
-import Layout from "../components/layout";
 
 import Link from "next/link";
+import { Fragment } from "react";
 
 export default function SaveTheWorld() {
   return (
-    <Layout>
+    <Fragment>
       <h1 className="title">
         Read{" "}
         <Link href="https://greatlakes.org/">
           <a>donate here!</a>
         </Link>
       </h1>
-    </Layout>
+    </Fragment>
   );
 }

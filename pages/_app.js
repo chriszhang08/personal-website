@@ -1,13 +1,21 @@
 import "../styles/global.css";
 import Navbar from "../components/navbar/navbar";
-import { ChakraProvider } from "@chakra-ui/react";
+import Footer from "../components/footer/footer";
+import Head from "next/head";
+import { ChakraProvider, Stack } from "@chakra-ui/react";
 
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider>
-      <Navbar />
-      {/* fix link css */}
-      <Component {...pageProps} />
+      <Head>
+        <title>Chris Zhang</title>
+      </Head>
+      <Stack direction={"column"} spacing={8}>
+        <Navbar />
+        {/* fix link css */}
+        <Component {...pageProps} />
+        <Footer />
+      </Stack>
     </ChakraProvider>
   );
 }
