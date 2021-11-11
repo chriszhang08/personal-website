@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 // import { lightTheme, darkTheme, GlobalStyles } from "../../styles/themeConfig";
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import colors from "../../styles/config/colors";
 
 // create logo component
 // export default function Logo (props) {
@@ -84,7 +85,7 @@ const Navbar = (props) => {
       mb={8}
       w="100%"
       color="black"
-      bg="aqua"
+      bg={colors.olive}
     >
       {/* can put logo here */}
       <Box align="center" mr={5}>

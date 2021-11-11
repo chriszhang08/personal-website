@@ -8,6 +8,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { Fragment } from "react";
+import colors from "../styles/config/colors";
 
 export default function Home() {
   return (
