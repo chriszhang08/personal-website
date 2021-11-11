@@ -2,12 +2,20 @@ import "../styles/global.css";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import Head from "next/head";
-import { ChakraProvider, Stack } from "@chakra-ui/react";
+import { ChakraProvider, Stack, theme } from "@chakra-ui/react";
 import colors from "../styles/config/colors";
+
+const customTheme = {
+  ...theme,
+  colors: {
+    ...theme.colors,
+    purple: "#692ba8",
+  },
+};
 
 export default function App({ Component, pageProps }) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Head>
         <title>Chris Zhang</title>
       </Head>

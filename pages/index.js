@@ -16,14 +16,24 @@ export default function Home() {
       <Flex w="100%" justify="center" direction="row">
         <Stack direction={"column"} w={["90%", "80%", "65%", "50%", "40%"]}>
           <Heading>Hi! My name is Chris Zhang</Heading>
-          <Text>
-            I love helping people I love helping people I love helping people I
-            love helping people I love helping people I love helping people I
-            love helping people I love helping people I love helping people I
-            love helping people I love helping people I love helping people I
-            love helping people I love helping people
-          </Text>
+          <Text>I want to save the world.</Text>
         </Stack>
+        <Box
+          as="a"
+          href="https://chakra-ui.com/"
+          p="6"
+          m="4"
+          borderWidth="1px"
+          rounded="lg"
+          flexBasis={["auto", "45%"]}
+        >
+          <Heading as="h3" size="lg" mb="2">
+            Chakra UI &rarr;
+          </Heading>
+          <Text fontSize="lg">
+            Build accessible React apps & websites with speed.
+          </Text>
+        </Box>
       </Flex>
     </Fragment>
   );
