@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Chris Zhang</title>
       </Head>
-      <Stack direction={"column"} spacing={8} bg={colors.khaki}>
+      <Stack direction={"column"} spacing={8} bg={colors.laurel}>
         <Navbar />
         {/* fix link css */}
         <Component {...pageProps} />

@@ -6,6 +6,9 @@ import {
   Stack,
   Heading,
   Flex,
+  List,
+  ListItem,
+  UnorderedList,
 } from "@chakra-ui/react";
 import { Fragment } from "react";
 
@@ -32,6 +35,46 @@ export default function Bio() {
             find various solutions to the imminent climate crisis our generation
             faces.
           </Text>
+          <Heading>What I'm learning</Heading>
+          <Stack direction="row" justify="space-evenly">
+            <Stack direction="column">
+              <Heading as="h2" size="md">
+                Fall 2021
+              </Heading>
+              <UnorderedList>
+                <ListItem>EECS 280</ListItem>
+                <ListItem>EECS 203</ListItem>
+                <ListItem>SOC 100</ListItem>
+                <ListItem>SOC 122</ListItem>
+              </UnorderedList>
+            </Stack>
+            <Stack direction="column">
+              <Heading as="h2" size="md">
+                Winter 2022
+              </Heading>
+              <UnorderedList>
+                <ListItem>EECS 281</ListItem>
+                <ListItem>CEE 211</ListItem>
+                <ListItem>CEE 265</ListItem>
+                <ListItem>CHEM 210</ListItem>
+              </UnorderedList>
+            </Stack>
+          </Stack>
+          <Heading>Hobbies, twitch.</Heading>
+          <Heading>Acknowledgements</Heading>
+          <Text>
+            I wouldn't be who I am without these very influential people in my
+            life. My parents. Raj Patel. Mrs. Maguire. Mrs. Franchi.
+          </Text>
+          <Heading>What I'm listening to right now</Heading>
+          <iframe
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1EpApgs18Dj6HV?utm_source=generator&amp;theme=0"
+            width="100%"
+            height="380"
+            frameBorder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          ></iframe>
         </Stack>
       </Flex>
     </Fragment>
