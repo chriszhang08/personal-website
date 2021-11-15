@@ -37,7 +37,7 @@ const MenuToggle = ({ toggle, isOpen }) => {
 const MenuItem = ({ children, isLast, to = "/" }) => {
   return (
     <Link href={to}>
-      <Text display="block">{children}</Text>
+      <Text display="flex">{children}</Text>
     </Link>
   );
 };
@@ -45,18 +45,12 @@ const MenuItem = ({ children, isLast, to = "/" }) => {
 // create menulinks component
 const MenuLinks = ({ isOpen, children, isLast, ...rest }) => {
   return (
-    <Box
-      display={{ base: isOpen ? "block" : "none", md: "block" }}
-      flexBasis={{ base: "100%", md: "auto" }}
-    >
+    <Box display={{ base: isOpen ? "block" : "none", md: "block" }}>
       <Stack
         spacing={8}
-        align="flex"
         justify={["center", "space-between", "flex-end", "flex-end"]}
         direction={"row"}
-        pt={[4, 4, 0, 0]}
         flexGrow={1}
-        padding={6}
       >
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/projects">Projects</MenuItem>
@@ -80,7 +74,6 @@ const Navbar = (props) => {
       justify="space-between"
       wrap="wrap"
       position="sticky"
-      top={0}
       p={8}
       mb={8}
       w="100%"
@@ -88,7 +81,7 @@ const Navbar = (props) => {
       bg={colors.olive}
     >
       {/* can put logo here */}
-      <Box align="center" mr={5}>
+      <Box mr={5}>
         <Heading as="h1" size="lg" letterSpacing={"tighter"}>
           Logo
         </Heading>

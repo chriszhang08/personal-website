@@ -16,17 +16,22 @@ import colors from "../styles/config/colors";
 export default function Home() {
   return (
     <Fragment>
-      <Flex w="100%" justify="center" direction="row">
-        <Stack direction={"column"} w={["90%", "80%", "65%", "50%", "40%"]}>
-          <Stack direction={"row"} w={["90%", "80%", "65%", "50%", "40%"]}>
+      <Flex width="100%" justify="center">
+        <Stack direction={"column"} justifyContent="center">
+          <Stack
+            direction="row"
+            width={["90%", "80%", "70%", "80%", "90%"]}
+            justifyContent="center"
+          >
             <Tooltip label="Learn more about me!">
               <Box
                 as="a"
                 href="/bio"
-                p="6"
-                m="4"
+                padding="6"
+                margin="4"
                 borderWidth="1px"
-                flexBasis={["auto", "0"]}
+                flexBasis="auto"
+                alignItems="stretch"
               >
                 <Heading>Hi! My name is Chris Zhang</Heading>
                 <Text>
@@ -44,7 +49,7 @@ export default function Home() {
                 p="6"
                 m="4"
                 borderWidth="1px"
-                flexBasis={["auto", "0"]}
+                flexBasis="auto"
               >
                 <Heading as="h3" size="lg" mb="2">
                   TheFantasyAnalyst &larr;
@@ -59,14 +64,14 @@ export default function Home() {
               </Box>
             </Tooltip>
           </Stack>
-          <Stack direction={"row"} w={["90%", "80%", "65%", "50%", "40%"]}>
+          <Stack direction={"row"} width={["90%", "80%", "70%", "80%", "90%"]}>
             <Box
               as="a"
               href="/bio"
               p="6"
               m="4"
               borderWidth="1px"
-              flexBasis={["auto", "0"]}
+              flexBasis="auto"
             >
               <Heading>The World is Dying</Heading>
               <Text>
@@ -82,7 +87,7 @@ export default function Home() {
               p="6"
               m="4"
               borderWidth="1px"
-              flexBasis={["auto", "0"]}
+              flexBasis="auto"
             >
               <Heading as="h3" size="lg" mb="2">
                 TheFantasyAnalyst &larr;

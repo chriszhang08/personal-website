@@ -11,7 +11,7 @@ const Footer = () => (
     role="contentinfo"
     mx="auto"
     maxW="7xl"
-    py="12"
+    py="6"
     px={{
       base: "4",
       md: "8",
