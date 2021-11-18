@@ -16,9 +16,35 @@ import colors from "../styles/config/colors";
 export default function Home() {
   return (
     <Fragment>
-      <Flex width="100%" justify="center">
-        <Stack direction={"column"} justifyContent="center">
+      <Stack direction={"row"} justifyContent="space-evenly">
+        <Box as="a" href="/bio" border="1px" width="20%">
           <Stack
+            direction={"column"}
+            marginTop="0"
+            textAlign="center"
+            fontSize="2xl"
+            fontWeight="bold"
+            padding="0px"
+          >
+            <Text>C</Text>
+            <Text>R</Text>
+            <Text>E</Text>
+            <Text>A</Text>
+            <Text>T</Text>
+            <Text>I</Text>
+            <Text>V</Text>
+            <Text>I</Text>
+            <Text>T</Text>
+            <Text>Y</Text>
+          </Stack>
+        </Box>
+        <Box as="a" href="/save-the-world" border="1px" width="20%">
+          <Text>Empathy</Text>
+        </Box>
+        <Box as="a" href="/projects" border="1px" width="20%">
+          <Text>Persistence</Text>
+        </Box>
+        {/* <Stack
             direction="row"
             width={["90%", "80%", "70%", "80%", "90%"]}
             justifyContent="center"
@@ -100,9 +126,8 @@ export default function Home() {
                 redraft.
               </Text>
             </Box>
-          </Stack>
-        </Stack>
-      </Flex>
+          </Stack> */}
+      </Stack>
     </Fragment>
   );
 }
