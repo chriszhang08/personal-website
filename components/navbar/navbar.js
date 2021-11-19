@@ -6,9 +6,11 @@ import {
   Flex,
   Text,
   Button,
+  Link,
   useDisclosure,
 } from "@chakra-ui/react";
-import Link from "next/link";
+import Image from "next/image";
+
 // import { lightTheme, darkTheme, GlobalStyles } from "../../styles/themeConfig";
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import colors from "../../styles/config/colors";
@@ -81,11 +83,11 @@ const Navbar = (props) => {
       bg={colors.olive}
     >
       {/* can put logo here */}
-      <Box mr={5}>
-        <Heading as="h1" size="lg" letterSpacing={"tighter"}>
-          Logo
-        </Heading>
-      </Box>
+      <Image
+        src="/Users/chris/Documents/CS/personal-website/public/images/profile.JPG"
+        height={144}
+        width={144}
+      />
       <MenuLinks isOpen={isOpen} />
       {/* <Box
         display={{ base: isOpen ? "block" : "none", md: "block" }}

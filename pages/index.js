@@ -17,33 +17,53 @@ export default function Home() {
   return (
     <Fragment>
       <Stack direction={"row"} justifyContent="space-evenly">
-        <Box as="a" href="/bio" border="1px" width="20%">
-          <Stack
-            direction={"column"}
-            marginTop="0"
-            textAlign="center"
-            fontSize="2xl"
-            fontWeight="bold"
-            padding="0px"
-          >
-            <Text>C</Text>
-            <Text>R</Text>
-            <Text>E</Text>
-            <Text>A</Text>
-            <Text>T</Text>
-            <Text>I</Text>
-            <Text>V</Text>
-            <Text>I</Text>
-            <Text>T</Text>
-            <Text>Y</Text>
-          </Stack>
-        </Box>
-        <Box as="a" href="/save-the-world" border="1px" width="20%">
-          <Text>Empathy</Text>
-        </Box>
-        <Box as="a" href="/projects" border="1px" width="20%">
-          <Text>Persistence</Text>
-        </Box>
+        <Flex
+          as="a"
+          href="/bio"
+          border="1px"
+          width="20%"
+          flexDirection="column"
+          textAlign="center"
+          justifyContent="center"
+          paddingTop="20%"
+          paddingBottom="20%"
+        >
+          <Text transform="rotate(90deg)" fontSize="3xl" fontWeight="bold">
+            Creativity
+          </Text>
+        </Flex>
+        <Flex
+          as="a"
+          href="/save-the-world"
+          border="1px"
+          width="20%"
+          flexDirection="column"
+          textAlign="center"
+          justifyContent="center"
+          paddingTop="20%"
+          paddingBottom="20%"
+        >
+          <Text transform="rotate(90deg)" fontSize="3xl" fontWeight="bold">
+            Empathy
+          </Text>
+        </Flex>
+        <Flex
+          as="a"
+          href="/projects"
+          border="1px"
+          width="20%"
+          flexDirection="column"
+          textAlign="center"
+          justifyContent="center"
+          paddingTop="20%"
+          paddingBottom="20%"
+        >
+          <Text transform="rotate(90deg)" fontSize="3xl" fontWeight="bold">
+            Persistence
+          </Text>
+        </Flex>
+        <Image src="/profile.png" width={144} height={144} />
+
         {/* <Stack
             direction="row"
             width={["90%", "80%", "70%", "80%", "90%"]}
