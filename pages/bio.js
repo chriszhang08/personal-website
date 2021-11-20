@@ -9,6 +9,7 @@ import {
   List,
   ListItem,
   UnorderedList,
+  Tooltip,
 } from "@chakra-ui/react";
 import { Fragment } from "react";
 
@@ -42,10 +43,24 @@ export default function Bio() {
                 Fall 2021
               </Heading>
               <UnorderedList>
-                <ListItem>EECS 280</ListItem>
-                <ListItem>EECS 203</ListItem>
-                <ListItem>SOC 100</ListItem>
-                <ListItem>SOC 122</ListItem>
+                <Tooltip
+                  label="Programming and Intro to Data Structures"
+                  placement="left"
+                >
+                  <ListItem>EECS 280</ListItem>
+                </Tooltip>
+                <Tooltip label="Discrete Mathematics" placement="left">
+                  <ListItem>EECS 203</ListItem>
+                </Tooltip>
+                <Tooltip label="Introduction to Sociology" placement="left">
+                  <ListItem>SOC 100</ListItem>
+                </Tooltip>
+                <Tooltip
+                  label="Introduction to Intergroup Dialogues"
+                  placement="left"
+                >
+                  <ListItem>SOC 122</ListItem>
+                </Tooltip>
               </UnorderedList>
             </Stack>
             <Stack direction="column">
@@ -53,10 +68,24 @@ export default function Bio() {
                 Winter 2022
               </Heading>
               <UnorderedList>
-                <ListItem>EECS 281</ListItem>
-                <ListItem>CEE 211</ListItem>
-                <ListItem>CEE 265</ListItem>
-                <ListItem>CHEM 210</ListItem>
+                <Tooltip
+                  label="Data Structures and Algorithms"
+                  placement="left"
+                >
+                  <ListItem>EECS 281</ListItem>
+                </Tooltip>
+                <Tooltip label="Statics and Dynamics" placement="left">
+                  <ListItem>CEE 211</ListItem>
+                </Tooltip>
+                <Tooltip
+                  label="Sustainable Engineering Principles"
+                  placement="left"
+                >
+                  <ListItem>CEE 265</ListItem>
+                </Tooltip>
+                <Tooltip label="Organic Chemistry I" placement="left">
+                  <ListItem>CHEM 210</ListItem>
+                </Tooltip>
               </UnorderedList>
             </Stack>
           </Stack>

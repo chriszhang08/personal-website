@@ -8,8 +8,8 @@ import {
   Button,
   Link,
   useDisclosure,
+  Image,
 } from "@chakra-ui/react";
-import Image from "next/image";
 
 // import { lightTheme, darkTheme, GlobalStyles } from "../../styles/themeConfig";
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
@@ -38,7 +38,7 @@ const MenuToggle = ({ toggle, isOpen }) => {
 // create menuitems component
 const MenuItem = ({ children, isLast, to = "/" }) => {
   return (
-    <Link href={to}>
+    <Link href={to} textDecoration="none">
       <Text display="flex">{children}</Text>
     </Link>
   );
@@ -83,11 +83,9 @@ const Navbar = (props) => {
       bg={colors.olive}
     >
       {/* can put logo here */}
-      <Image
-        src="/Users/chris/Documents/CS/personal-website/public/images/profile.JPG"
-        height={144}
-        width={144}
-      />
+      <Link href="/">
+        <Image src="/logo.png" height={75} width={150} />
+      </Link>
       <MenuLinks isOpen={isOpen} />
       {/* <Box
         display={{ base: isOpen ? "block" : "none", md: "block" }}

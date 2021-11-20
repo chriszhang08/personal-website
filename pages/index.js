@@ -62,7 +62,6 @@ export default function Home() {
             Persistence
           </Text>
         </Flex>
-        <Image src="/profile.png" width={144} height={144} />
 
         {/* <Stack
             direction="row"
