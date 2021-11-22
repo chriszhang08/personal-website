@@ -9,8 +9,7 @@ const Footer = () => (
   <Box
     as="footer"
     role="contentinfo"
-    mx="auto"
-    maxW="7xl"
+    marginTop="80px"
     py="6"
     px={{
       base: "4",

@@ -14,17 +14,9 @@ import {
 // import { lightTheme, darkTheme, GlobalStyles } from "../../styles/themeConfig";
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import colors from "../../styles/config/colors";
+import { motion } from "framer-motion";
 
-// create logo component
-// export default function Logo (props) {
-//   return (
-//     <Box {...props}>
-//       <Text fontSize="lg" fontWeight="bold">
-//         Logo
-//       </Text>
-//     </Box>
-//   );
-// };
+const MotionImage = motion(Image);
 
 // create menutoggle component
 const MenuToggle = ({ toggle, isOpen }) => {
@@ -76,28 +68,23 @@ const Navbar = (props) => {
       justify="space-between"
       wrap="wrap"
       position="sticky"
-      p={8}
-      mb={8}
+      paddingX={8}
+      paddingY={4}
+      marginBottom={8}
       w="100%"
       color="black"
       bg={colors.olive}
     >
       {/* can put logo here */}
       <Link href="/">
-        <Image src="/logo.png" height={75} width={150} />
+        <MotionImage
+          src="/logo.png"
+          height={75}
+          width={150}
+          whileTap={{ scale: 0.8 }}
+        />
       </Link>
       <MenuLinks isOpen={isOpen} />
-      {/* <Box
-        display={{ base: isOpen ? "block" : "none", md: "block" }}
-        mt={{ base: 4, md: 0 }}
-      >
-        <Button
-          variant="outline"
-          _hover={{ bg: "teal.700", borderColor: "teal.700" }}
-        >
-          Create account
-        </Button>
-      </Box> */}
       <MenuToggle toggle={handleToggle} isOpen={isOpen} />
     </Flex>
   );

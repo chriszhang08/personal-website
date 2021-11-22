@@ -12,42 +12,52 @@ import {
 import Image from "next/image";
 import { Fragment } from "react";
 import colors from "../styles/config/colors";
+import { motion } from "framer-motion";
+
+const MotionFlex = motion(Flex);
 
 export default function Home() {
   return (
     <Fragment>
       <Stack direction={"row"} justifyContent="space-evenly">
-        <Flex
+        <MotionFlex
           as="a"
           href="/bio"
-          border="1px"
-          width="20%"
+          width="300px"
+          height="300px"
           flexDirection="column"
           textAlign="center"
           justifyContent="center"
-          paddingTop="20%"
-          paddingBottom="20%"
+          borderRadius="50%"
+          padding="5"
+          bg="white"
+          drag
+          dragConstraints={{ left: -100, right: 1000, top: -100, bottom: 100 }}
         >
-          <Text transform="rotate(90deg)" fontSize="3xl" fontWeight="bold">
+          {/* add button to go to bio page */}
+          {/* on click make it flip */}
+          <Text fontSize="3xl" fontWeight="bold">
             Creativity
           </Text>
-        </Flex>
-        <Flex
+        </MotionFlex>
+        <MotionFlex
           as="a"
           href="/save-the-world"
           border="1px"
-          width="20%"
+          width="300px"
+          height="300px"
           flexDirection="column"
           textAlign="center"
           justifyContent="center"
-          paddingTop="20%"
-          paddingBottom="20%"
+          borderRadius="50%"
+          drag
+          dragConstraints={{ left: -600, right: 600, top: -100, bottom: 100 }}
         >
-          <Text transform="rotate(90deg)" fontSize="3xl" fontWeight="bold">
+          <Text fontSize="3xl" fontWeight="bold">
             Empathy
           </Text>
-        </Flex>
-        <Flex
+        </MotionFlex>
+        <MotionFlex
           as="a"
           href="/projects"
           border="1px"
@@ -55,13 +65,16 @@ export default function Home() {
           flexDirection="column"
           textAlign="center"
           justifyContent="center"
-          paddingTop="20%"
-          paddingBottom="20%"
+          borderRadius="50%"
+          width="300px"
+          height="300px"
+          drag
+          dragConstraints={{ left: -1000, right: 100, top: -100, bottom: 100 }}
         >
-          <Text transform="rotate(90deg)" fontSize="3xl" fontWeight="bold">
+          <Text fontSize="3xl" fontWeight="bold">
             Persistence
           </Text>
-        </Flex>
+        </MotionFlex>
 
         {/* <Stack
             direction="row"
