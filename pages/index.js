@@ -8,21 +8,39 @@ import {
   Flex,
   Link,
   Tooltip,
+  Button,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import { Fragment } from "react";
+import { Fragment, FC, useState } from "react";
 import colors from "../styles/config/colors";
 import { motion } from "framer-motion";
 
 const MotionFlex = motion(Flex);
 
+// const Card: FC<CardProps> = ({ style, ...rest }) => {
+//   return (<MotionFlex initial={{ rotateY: -180 }}
+//     exit={{ rotateY: -180 }}
+//     animate={{ rotateY: 0 }}
+//     transition={{ type: "spring", damping: 20, stiffness: 80 }}
+//     style={{
+//       ...style,
+//       position: "absolute",
+//       WebkitBackfaceVisibility: "hidden",
+//       width: 345,
+//       height: 345,
+//     }}
+//     {...rest}></MotionFlex>
+// };
+
 export default function Home() {
+  const [flip, setFlip] = useState(true);
+  const [flip2, setFlip2] = useState(true);
+  const [flip3, setFlip3] = useState(true);
+
   return (
     <Fragment>
       <Stack direction={"row"} justifyContent="space-evenly">
         <MotionFlex
-          as="a"
-          href="/bio"
           width="300px"
           height="300px"
           flexDirection="column"
@@ -30,135 +48,181 @@ export default function Home() {
           justifyContent="center"
           borderRadius="50%"
           padding="5"
-          bg="white"
+          bg={colors.cloudPink}
+          boxShadow="lg"
           drag
           dragConstraints={{ left: -100, right: 1000, top: -100, bottom: 100 }}
+          transition={{
+            duration: 0.7,
+            type: "spring",
+            damping: 20,
+            stiffness: 80,
+          }}
+          onMouseEnter={() => setFlip(false)}
+          onMouseLeave={() => setFlip(true)}
         >
-          {/* add button to go to bio page */}
-          {/* on click make it flip */}
-          <Text fontSize="3xl" fontWeight="bold">
-            Creativity
-          </Text>
-        </MotionFlex>
-        <MotionFlex
-          as="a"
-          href="/save-the-world"
-          border="1px"
-          width="300px"
-          height="300px"
-          flexDirection="column"
-          textAlign="center"
-          justifyContent="center"
-          borderRadius="50%"
-          drag
-          dragConstraints={{ left: -600, right: 600, top: -100, bottom: 100 }}
-        >
-          <Text fontSize="3xl" fontWeight="bold">
-            Empathy
-          </Text>
-        </MotionFlex>
-        <MotionFlex
-          as="a"
-          href="/projects"
-          border="1px"
-          width="20%"
-          flexDirection="column"
-          textAlign="center"
-          justifyContent="center"
-          borderRadius="50%"
-          width="300px"
-          height="300px"
-          drag
-          dragConstraints={{ left: -1000, right: 100, top: -100, bottom: 100 }}
-        >
-          <Text fontSize="3xl" fontWeight="bold">
-            Persistence
-          </Text>
-        </MotionFlex>
-
-        {/* <Stack
-            direction="row"
-            width={["90%", "80%", "70%", "80%", "90%"]}
-            justifyContent="center"
+          <MotionFlex
+            alignSelf="center"
+            position="relative"
+            top="22%"
+            transition={{ duration: 0.7 }}
+            initial={{ rotateY: 0 }}
+            animate={{ rotateY: flip ? 0 : 180 }}
+            sx={{ backfaceVisibility: "hidden" }}
           >
-            <Tooltip label="Learn more about me!">
-              <Box
-                as="a"
-                href="/bio"
-                padding="6"
-                margin="4"
-                borderWidth="1px"
-                flexBasis="auto"
-                alignItems="stretch"
-              >
-                <Heading>Hi! My name is Chris Zhang</Heading>
-                <Text>
-                  I want to{" "}
-                  <Link href="/save-the-world" color={colors.blue}>
-                    save the world.
-                  </Link>
-                </Text>
-              </Box>
-            </Tooltip>
-            <Tooltip label="See my projects!">
-              <Box
-                as="a"
-                href="/projects"
-                p="6"
-                m="4"
-                borderWidth="1px"
-                flexBasis="auto"
-              >
-                <Heading as="h3" size="lg" mb="2">
-                  TheFantasyAnalyst &larr;
-                </Heading>
-                <Text fontSize="lg">
-                  I suck at fantasy football. So I made an app that tells me why
-                  I suck at fantasy football. <br /> <br />
-                  It's filled with innovative metrics like an automatic lineup
-                  optimizer, an adjusted one-vs-all record, and a full-league
-                  redraft.
-                </Text>
-              </Box>
-            </Tooltip>
-          </Stack>
-          <Stack direction={"row"} width={["90%", "80%", "70%", "80%", "90%"]}>
-            <Box
+            <Text
               as="a"
               href="/bio"
-              p="6"
-              m="4"
-              borderWidth="1px"
-              flexBasis="auto"
+              fontSize="3xl"
+              fontWeight="bold"
+              textAlign="center"
             >
-              <Heading>The World is Dying</Heading>
-              <Text>
-                I want to{" "}
-                <Link href="/save-the-world" color={colors.blue}>
-                  save the world.
-                </Link>
-              </Text>
-            </Box>
-            <Box
+              Creativity
+            </Text>
+          </MotionFlex>
+          <MotionFlex
+            position="relative"
+            top="-5%"
+            transition={{ duration: 0.7 }}
+            initial={{ rotateY: 180 }}
+            animate={{ rotateY: flip ? 180 : 0 }}
+            sx={{ backfaceVisibility: "hidden" }}
+          >
+            <Text
               as="a"
-              href="/projects"
-              p="6"
-              m="4"
-              borderWidth="1px"
-              flexBasis="auto"
+              href="/bio"
+              fontSize="sm"
+              fontWeight="bold"
+              textAlign="center"
             >
-              <Heading as="h3" size="lg" mb="2">
-                TheFantasyAnalyst &larr;
-              </Heading>
-              <Text fontSize="lg">
-                I suck at fantasy football. So I made an app that tells me why I
-                suck at fantasy football. <br /> <br />
-                It's filled with innovative metrics like an automatic lineup
-                optimizer, an adjusted one-vs-all record, and a full-league
-                redraft.
-              </Text>
-            </Box>
-          </Stack> */}
+              Creativity is an integral part of innovation, and it is the
+              foundation of my passions and work interests. Learn more about my
+              creative self here.
+            </Text>
+          </MotionFlex>
+        </MotionFlex>
+        <MotionFlex
+          width="300px"
+          height="300px"
+          flexDirection="column"
+          textAlign="center"
+          justifyContent="center"
+          borderRadius="50%"
+          padding="5"
+          boxShadow="lg"
+          drag
+          dragConstraints={{ left: -600, right: 600, top: -100, bottom: 100 }}
+          bg={colors.cloudBlue}
+          transition={{
+            duration: 0.7,
+            type: "spring",
+            damping: 20,
+            stiffness: 80,
+          }}
+          onMouseEnter={() => setFlip2(false)}
+          onMouseLeave={() => setFlip2(true)}
+        >
+          <MotionFlex
+            alignSelf="center"
+            position="relative"
+            top="22%"
+            transition={{ duration: 0.7 }}
+            initial={{ rotateY: 0 }}
+            animate={{ rotateY: flip2 ? 0 : 180 }}
+            sx={{ backfaceVisibility: "hidden" }}
+          >
+            <Text
+              as="a"
+              href="/bio"
+              fontSize="3xl"
+              fontWeight="bold"
+              textAlign="center"
+            >
+              Empathy
+            </Text>
+          </MotionFlex>
+          <MotionFlex
+            position="relative"
+            top="-5%"
+            transition={{ duration: 0.7 }}
+            initial={{ rotateY: 180 }}
+            animate={{ rotateY: flip2 ? 180 : 0 }}
+            sx={{ backfaceVisibility: "hidden" }}
+          >
+            <Text
+              as="a"
+              href="/bio"
+              fontSize="sm"
+              fontWeight="bold"
+              textAlign="center"
+            >
+              Empathy is the heart of my character. My sole purpose in life is
+              to help others, and inevitably, this planet. Learn more about the
+              climate crisis here.
+            </Text>
+          </MotionFlex>
+        </MotionFlex>
+        <MotionFlex
+          width="300px"
+          height="300px"
+          flexDirection="column"
+          textAlign="center"
+          justifyContent="center"
+          borderRadius="50%"
+          padding="5"
+          bg={colors.cloudPurple}
+          boxShadow="lg"
+          drag
+          dragConstraints={{ left: -1000, right: 100, top: -100, bottom: 100 }}
+          transition={{
+            duration: 0.7,
+            type: "spring",
+            damping: 20,
+            stiffness: 80,
+          }}
+          onMouseEnter={() => setFlip3(false)}
+          onMouseLeave={() => setFlip3(true)}
+        >
+          <MotionFlex
+            alignSelf="center"
+            position="relative"
+            top="22%"
+            transition={{ duration: 0.7 }}
+            initial={{ rotateY: 0 }}
+            animate={{ rotateY: flip3 ? 0 : 180 }}
+            sx={{ backfaceVisibility: "hidden" }}
+          >
+            <Text
+              as="a"
+              href="/bio"
+              fontSize="3xl"
+              fontWeight="bold"
+              textAlign="center"
+            >
+              Persistence
+            </Text>
+          </MotionFlex>
+          <MotionFlex
+            position="relative"
+            top="-5%"
+            transition={{ duration: 0.7 }}
+            initial={{ rotateY: 180 }}
+            animate={{ rotateY: flip3 ? 180 : 0 }}
+            sx={{ backfaceVisibility: "hidden" }}
+          >
+            <Text
+              as="a"
+              href="/bio"
+              fontSize="sm"
+              fontWeight="bold"
+              textAlign="center"
+            >
+              Persistence is the cornerstone of my work ethic. This translates
+              notably into my personal passion projects. Learn more about these
+              projects here.
+            </Text>
+          </MotionFlex>
+        </MotionFlex>
       </Stack>
     </Fragment>
   );

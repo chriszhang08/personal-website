@@ -31,7 +31,9 @@ const MenuToggle = ({ toggle, isOpen }) => {
 const MenuItem = ({ children, isLast, to = "/" }) => {
   return (
     <Link href={to} textDecoration="none">
-      <Text display="flex">{children}</Text>
+      <Text display="flex" _hover={{ color: "#ffffff" }}>
+        {children}
+      </Text>
     </Link>
   );
 };
@@ -73,7 +75,6 @@ const Navbar = (props) => {
       marginBottom={8}
       w="100%"
       color="black"
-      bg={colors.olive}
     >
       {/* can put logo here */}
       <Link href="/">

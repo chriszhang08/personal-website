@@ -2,7 +2,7 @@ import "../styles/global.css";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import Head from "next/head";
-import { ChakraProvider, Stack, theme } from "@chakra-ui/react";
+import { ChakraProvider, Stack, Flex, theme } from "@chakra-ui/react";
 import colors from "../styles/config/colors";
 
 const customTheme = {
@@ -19,12 +19,21 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Chris Zhang</title>
       </Head>
-      <Stack direction={"column"} spacing={8} bg={colors.laurel}>
-        <Navbar />
+      <Flex
+        direction={"column"}
+        bgGradient="linear(to-b, #3c3b5f, #f06553, #fff474)"
+        flexFlow="column"
+      >
+        <Navbar flexGrow={0} flexShrink={1} flexBasis="auto" />
         {/* fix link css */}
-        <Component {...pageProps} />
-        <Footer />
-      </Stack>
+        <Component
+          flexGrow={1}
+          flexShrink={1}
+          flexBasis="auto"
+          {...pageProps}
+        />
+        <Footer flexGrow={0} flexShrink={1} flexBasis="40px" />
+      </Flex>
     </ChakraProvider>
   );
 }
