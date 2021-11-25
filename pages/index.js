@@ -17,21 +17,6 @@ import { motion } from "framer-motion";
 
 const MotionFlex = motion(Flex);
 
-// const Card: FC<CardProps> = ({ style, ...rest }) => {
-//   return (<MotionFlex initial={{ rotateY: -180 }}
-//     exit={{ rotateY: -180 }}
-//     animate={{ rotateY: 0 }}
-//     transition={{ type: "spring", damping: 20, stiffness: 80 }}
-//     style={{
-//       ...style,
-//       position: "absolute",
-//       WebkitBackfaceVisibility: "hidden",
-//       width: 345,
-//       height: 345,
-//     }}
-//     {...rest}></MotionFlex>
-// };
-
 export default function Home() {
   const [flip, setFlip] = useState(true);
   const [flip2, setFlip2] = useState(true);
@@ -60,6 +45,7 @@ export default function Home() {
           }}
           onMouseEnter={() => setFlip(false)}
           onMouseLeave={() => setFlip(true)}
+          _hover={{ color: "#ffffff" }}
         >
           <MotionFlex
             alignSelf="center"
@@ -121,6 +107,7 @@ export default function Home() {
           }}
           onMouseEnter={() => setFlip2(false)}
           onMouseLeave={() => setFlip2(true)}
+          _hover={{ color: "#ffffff" }}
         >
           <MotionFlex
             alignSelf="center"
@@ -133,7 +120,7 @@ export default function Home() {
           >
             <Text
               as="a"
-              href="/bio"
+              href="/save-the-world"
               fontSize="3xl"
               fontWeight="bold"
               textAlign="center"
@@ -151,7 +138,7 @@ export default function Home() {
           >
             <Text
               as="a"
-              href="/bio"
+              href="/save-the-world"
               fontSize="sm"
               fontWeight="bold"
               textAlign="center"
@@ -182,6 +169,7 @@ export default function Home() {
           }}
           onMouseEnter={() => setFlip3(false)}
           onMouseLeave={() => setFlip3(true)}
+          _hover={{ color: "#ffffff" }}
         >
           <MotionFlex
             alignSelf="center"
@@ -194,7 +182,7 @@ export default function Home() {
           >
             <Text
               as="a"
-              href="/bio"
+              href="/projects"
               fontSize="3xl"
               fontWeight="bold"
               textAlign="center"
@@ -212,7 +200,7 @@ export default function Home() {
           >
             <Text
               as="a"
-              href="/bio"
+              href="/projects"
               fontSize="sm"
               fontWeight="bold"
               textAlign="center"

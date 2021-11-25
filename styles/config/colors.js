@@ -5,7 +5,7 @@ export default {
   white: "#ffffff",
   olive: "#656D4A",
   sage: "#A4AC86",
-  rifle: "414833",
+  rifle: "#414833",
   laurel: "#C2C5AA",
   khaki: "#B6AD90",
   camel: "#A68A64",

@@ -15,7 +15,7 @@ const Footer = () => (
       base: "4",
       md: "8",
     }}
-    bg={colors.oceanBlue}
+    bg={colors.olive}
   >
     <Stack spacing="10" divider={<StackDivider />}>
       <Stack
