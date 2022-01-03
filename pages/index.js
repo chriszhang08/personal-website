@@ -13,7 +13,7 @@ import {
 import Image from "next/image";
 import { Fragment, FC, useState } from "react";
 import colors from "../styles/config/colors";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 
 const MotionFlex = motion(Flex);
 
@@ -21,10 +21,16 @@ export default function Home() {
   const [flip, setFlip] = useState(true);
   const [flip2, setFlip2] = useState(true);
   const [flip3, setFlip3] = useState(true);
+  const x = useMotionValue(100);
 
   return (
     <Fragment>
-      <Stack direction={"row"} justifyContent="space-evenly">
+      <Stack
+        direction={"row"}
+        justifyContent="space-evenly"
+        height="59vh"
+        marginY={8}
+      >
         <MotionFlex
           width="300px"
           height="300px"
@@ -42,6 +48,9 @@ export default function Home() {
             type: "spring",
             damping: 20,
             stiffness: 80,
+          }}
+          animate={{
+            translateX: 100,
           }}
           onMouseEnter={() => setFlip(false)}
           onMouseLeave={() => setFlip(true)}

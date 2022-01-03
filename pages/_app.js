@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }) {
         bgGradient="linear(to-b, #3c3b5f, #f06553, #fff474)"
         flexFlow="column"
       >
-        <Navbar flexGrow={0} flexShrink={1} flexBasis="auto" />
+        <Navbar flexGrow={0} flexShrink={1} flexBasis="auto" bg="white" />
         {/* fix link css */}
         <Component
           flexGrow={1}

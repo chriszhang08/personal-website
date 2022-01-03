@@ -72,7 +72,6 @@ const Navbar = (props) => {
       position="sticky"
       paddingX={8}
       paddingY={4}
-      marginBottom={8}
       w="100%"
       color="black"
     >
