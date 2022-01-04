@@ -18,7 +18,11 @@ const MotionFlex = motion(Flex);
 const MotionStack = motion(Stack);
 const scrollVariants = {
   hidden: { opacity: 0, y: 1000 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1.2, type: "spring", damping: 20, stiffness: 40 },
+  },
 };
 
 // function ProjectCard() {

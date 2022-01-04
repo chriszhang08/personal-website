@@ -49,12 +49,12 @@ export default function SaveTheWorld() {
             since the 1850s. At this point, certain extreme weather consequences
             are{" "}
             <Tooltip label="changing rainfall patterns, melting of Arctic ice, acidification of oceans to name a few">
-              <Link
+              <a
                 href="https://news.un.org/en/story/2021/08/1097362"
-                color="white"
+                style={{ color: "white" }}
               >
                 irreversible
-              </Link>
+              </a>
             </Tooltip>
             . But there are many extreme climate situations that we can still
             prevent.
@@ -90,12 +90,12 @@ export default function SaveTheWorld() {
                     Simply growing the amount of food necessary to feed 7
                     billion people contributes{" "}
                     <Tooltip label="if this waste was its own country, it would be the world's 3rd most polluting country">
-                      <Link
+                      <a
                         href="https://www.universityofcalifornia.edu/longform/what-you-need-know-about-food-waste-and-climate-change"
-                        color="white"
+                        style={{ color: "white" }}
                       >
                         6.7%
-                      </Link>
+                      </a>
                     </Tooltip>{" "}
                     of the worlds carbon emissions. In the US, 85% of food waste
                     occurs in stores, restaurants and homes. By throwing away
@@ -138,12 +138,12 @@ export default function SaveTheWorld() {
                     resources, if not done properly, it can actually harm the
                     environment. In 2018, just over 8 percent of the{" "}
                     <Tooltip label="recycling plastics has many restrictions, which varies between who collects your recycling">
-                      <Link
+                      <a
                         href="https://environment.co/how-much-recycling-actually-gets-recycled/"
-                        color="white"
+                        style={{ color: "white" }}
                       >
                         recyclable
-                      </Link>
+                      </a>
                     </Tooltip>{" "}
                     plastic was recycled. The rest of the recyclable plastic
                     gets thrown out. Read up on your local recycling guidelines

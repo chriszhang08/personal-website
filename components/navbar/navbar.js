@@ -30,11 +30,11 @@ const MenuToggle = ({ toggle, isOpen }) => {
 // create menuitems component
 const MenuItem = ({ children, isLast, to = "/" }) => {
   return (
-    <Link href={to} textDecoration="none">
+    <a href={to}>
       <Text display="flex" _hover={{ color: "#ffffff" }}>
         {children}
       </Text>
-    </Link>
+    </a>
   );
 };
 
@@ -75,15 +75,14 @@ const Navbar = (props) => {
       w="100%"
       color="black"
     >
-      {/* can put logo here */}
-      <Link href="/">
+      <a href="/">
         <MotionImage
           src="/logo.png"
           height={75}
           width={150}
           whileTap={{ scale: 0.8 }}
         />
-      </Link>
+      </a>
       <MenuLinks isOpen={isOpen} />
       <MenuToggle toggle={handleToggle} isOpen={isOpen} />
     </Flex>
