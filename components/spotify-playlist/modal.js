@@ -14,7 +14,8 @@ const modal = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
+      delay: 0.1,
+      duration: 1,
       type: "spring",
       damping: 20,
       stiffness: 80,
