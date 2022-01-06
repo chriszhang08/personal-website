@@ -77,7 +77,7 @@ const Navbar = (props) => {
     >
       <a href="/">
         <MotionImage
-          src="/logo.png"
+          src="/logo.PNG"
           height={75}
           width={150}
           whileTap={{ scale: 0.8 }}

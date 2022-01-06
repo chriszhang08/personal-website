@@ -16,9 +16,6 @@ const customTheme = {
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <Head>
-        <title>Chris Zhang</title>
-      </Head>
       <Flex
         direction={"column"}
         bgGradient="linear(to-b, #3c3b5f, #f06553, #fff474)"

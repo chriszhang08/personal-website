@@ -78,53 +78,63 @@ const scrollVariants = {
 
 export default function Projects() {
   return (
-    <Fragment>
-      <Flex w="100%" justify="center" direction="row">
-        <MotionStack
-          direction={"column"}
-          w={["90%", "80%", "65%", "50%", "40%"]}
-          variants={scrollVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <Heading
-            as="a"
-            href="https://github.com/chriszhang08/TheFantasyAnalyst"
+    <>
+      <Head>
+        <title>Personal Projects</title>
+        <meta
+          name="description"
+          content="List of all computer science personal projects I am doing right now, or have completed."
+        />
+      </Head>
+      <Fragment>
+        <Flex w="100%" justify="center" direction="row">
+          <MotionStack
+            direction={"column"}
+            w={["90%", "80%", "65%", "50%", "40%"]}
+            variants={scrollVariants}
+            initial="hidden"
+            animate="visible"
           >
-            TheFantasyAnalyst
-          </Heading>
-          <Text>
-            Fantasy football is hard. Just last year, I had 5 injured players on
-            my team! Its a miracle I didn't do my leagues last place punishment.
-            But how come my team - which was by far the worst - didn't do a
-            punishment? This project explores that very question and more.
-            TheFantasyAnalyst is a fantasy football analysis tool that analyzes
-            your league's data to help you reach innovative hindsight analysis.
-            It includes metrics like a one-vs-all record, a combined
-            head-to-head record, an automatic lineup optimizer, a fantasy
-            redraft, and more. This app fits perfectly into the multibillion
-            dollar competitive culture that fantasy football endorses and
-            enables a greater range of fairness in the unjust world that is
-            sports.
-          </Text>
-          <Text>Video demonstration of the app</Text>
-          <Heading as="a" href="https://github.com/chriszhang08/ChessGUI">
-            Chess GUI
-          </Heading>
-          <Text>
-            "Chess is one of the few arts where composition takes place
-            simultaneously with performance." - Garry Kasparov. Chess is a
-            beautiful dance of logic, strategy, and symbolism. And it's a
-            nightmare to code. This project was the culmination of my AP
-            Computer Science A course, as I explored the universe of possibility
-            that could be built with a computer. This project was coded solely
-            in Java, using the Swing library to create a window-based GUI.
-          </Text>
-          <Heading>
-            Unfortunately, I don't have any more projects to exhibit :(
-          </Heading>
-        </MotionStack>
-      </Flex>
-    </Fragment>
+            <Heading
+              as="a"
+              href="https://github.com/chriszhang08/TheFantasyAnalyst"
+            >
+              TheFantasyAnalyst
+            </Heading>
+            <Text>
+              Fantasy football is hard. Just last year, I had 5 injured players
+              on my team! Its a miracle I didn't do my leagues last place
+              punishment. But how come my team - which was by far the worst -
+              didn't do a punishment? This project explores that very question
+              and more. TheFantasyAnalyst is a fantasy football analysis tool
+              that analyzes your league's data to help you reach innovative
+              hindsight analysis. It includes metrics like a one-vs-all record,
+              a combined head-to-head record, an automatic lineup optimizer, a
+              fantasy redraft, and more. This app fits perfectly into the
+              multibillion dollar competitive culture that fantasy football
+              endorses and enables a greater range of fairness in the unjust
+              world that is sports.
+            </Text>
+            <Text>Video demonstration of the app</Text>
+            <Heading as="a" href="https://github.com/chriszhang08/ChessGUI">
+              Chess GUI
+            </Heading>
+            <Text>
+              "Chess is one of the few arts where composition takes place
+              simultaneously with performance." - Garry Kasparov. Chess is a
+              beautiful dance of logic, strategy, and symbolism. And it's a
+              nightmare to code. This project was the culmination of my AP
+              Computer Science A course, as I explored the universe of
+              possibility that could be built with a computer. This project was
+              coded solely in Java, using the Swing library to create a
+              window-based GUI.
+            </Text>
+            <Heading>
+              Unfortunately, I don't have any more projects to exhibit :(
+            </Heading>
+          </MotionStack>
+        </Flex>
+      </Fragment>
+    </>
   );
 }

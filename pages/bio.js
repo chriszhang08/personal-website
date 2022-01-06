@@ -18,6 +18,7 @@ import colors from "../styles/config/colors";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Modal from "../components/spotify-playlist/modal";
+import Head from "next/head";
 
 const MotionFlex = motion(Flex);
 
@@ -32,34 +33,48 @@ const CircleDiv = ({
   leftX,
 }) => {
   return (
-    <MotionFlex
-      borderRadius="50%"
-      width={radius}
-      height={radius}
-      justifyContent="center"
-      position="relative"
-      top={topX}
-      left={leftX}
-      bg={color}
-      // make box shadow only if the box is hovered
-      boxShadow={showShadow ? "md" : ""}
-      drag
-      dragConstraints={{
-        left: -2,
-        right: 2,
-        top: -2,
-        bottom: 2,
-      }}
-      whileHover={{ scale: 1.1 }}
-      // make the div stack on hover
-      zIndex={showShadow ? 1 : 0}
-      onMouseEnter={() => setShowShadow(true)}
-      onMouseLeave={() => setShowShadow(false)}
-    >
-      <Text alignSelf="center" textAlign="center" fontSize={textSize}>
-        {text}
-      </Text>
-    </MotionFlex>
+    <>
+      <Head>
+        <title>About Me</title>
+        <meta
+          name="description"
+          content="More about my passions and interests, and other academic pursuits."
+        />
+        <meta
+          name="author"
+          content="Chris Zhang, born in Ann Arbor, Michigan. Raised in Novi, Michigan, attended 
+          Novi High School. Currently living in Ann Arbor, Michigan, attending the University of Michigan."
+        />
+      </Head>
+      <MotionFlex
+        borderRadius="50%"
+        width={radius}
+        height={radius}
+        justifyContent="center"
+        position="relative"
+        top={topX}
+        left={leftX}
+        bg={color}
+        // make box shadow only if the box is hovered
+        boxShadow={showShadow ? "md" : ""}
+        drag
+        dragConstraints={{
+          left: -2,
+          right: 2,
+          top: -2,
+          bottom: 2,
+        }}
+        whileHover={{ scale: 1.1 }}
+        // make the div stack on hover
+        zIndex={showShadow ? 1 : 0}
+        onMouseEnter={() => setShowShadow(true)}
+        onMouseLeave={() => setShowShadow(false)}
+      >
+        <Text alignSelf="center" textAlign="center" fontSize={textSize}>
+          {text}
+        </Text>
+      </MotionFlex>
+    </>
   );
 };
 
@@ -169,9 +184,15 @@ export default function Bio() {
                 </UnorderedList>
               </Stack>
             </Stack>
-            <Button marginTop={5} size="sm" width="100%">
-              View Transcript
-            </Button>
+            <a
+              href="https://drive.google.com/file/d/1C8SvnXeyqVhEltF6J4vyvygP-seUyLKh/view"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button marginTop={5} size="sm" width="100%">
+                View Transcript
+              </Button>
+            </a>
           </GridItem>
           <GridItem rowSpan={4} padding={8} bgColor={colors.cloudPink}>
             <Stack>
@@ -205,6 +226,8 @@ export default function Bio() {
                     <a
                       style={{ color: "white" }}
                       href="https://www.twitch.tv/agentguffy"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Twitch.
                     </a>
@@ -218,6 +241,8 @@ export default function Bio() {
                     <a
                       style={{ color: "white" }}
                       href="https://www.youtube.com/channel/UCSfZUAvCvrXOw_VNY4WIVnA"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       side.
                     </a>
