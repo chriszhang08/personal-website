@@ -73,6 +73,7 @@ const Navbar = (props) => {
       paddingX={8}
       paddingY={4}
       w="100%"
+      height="20vh"
       color="black"
     >
       <a href="/">

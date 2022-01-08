@@ -16,11 +16,7 @@ const customTheme = {
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <Flex
-        direction={"column"}
-        bgGradient="linear(to-b, #3c3b5f, #f06553, #fff474)"
-        flexFlow="column"
-      >
+      <Flex direction={"column"} bgColor={colors.sageL} flexFlow="column">
         <Navbar flexGrow={0} flexShrink={1} flexBasis="auto" bg="white" />
         {/* fix link css */}
         <Component

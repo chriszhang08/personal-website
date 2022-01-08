@@ -44,13 +44,7 @@ export default function SaveTheWorld() {
         />
       </Head>
       <Fragment>
-        <Flex
-          w="100%"
-          justify="center"
-          direction="row"
-          bg={colors.cloudBlue}
-          paddingY={8}
-        >
+        <Flex w="100%" justify="center" direction="row" paddingY={8}>
           <Stack w={["90%", "80%", "65%", "50%", "40%"]}>
             <Heading>Climate Change is today's problem.</Heading>
             <Text>

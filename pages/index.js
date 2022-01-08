@@ -37,8 +37,8 @@ export default function Home() {
         <Stack
           direction={"row"}
           justifyContent="space-evenly"
-          height="59vh"
-          marginY={8}
+          alignItems="center"
+          height="66vh"
         >
           <MotionFlex
             width="300px"
@@ -48,7 +48,7 @@ export default function Home() {
             justifyContent="center"
             borderRadius="50%"
             padding="5"
-            bg={colors.cloudPink}
+            bgGradient="linear(to-b, #f0efe2, #8c8c88)"
             boxShadow="lg"
             drag
             dragConstraints={{
@@ -63,9 +63,7 @@ export default function Home() {
               damping: 20,
               stiffness: 80,
             }}
-            animate={{
-              translateX: 100,
-            }}
+            // TODO: add infinite velocity and bouncing animation
             onMouseEnter={() => setFlip(false)}
             onMouseLeave={() => setFlip(true)}
             _hover={{ color: "#ffffff" }}
@@ -121,7 +119,7 @@ export default function Home() {
             boxShadow="lg"
             drag
             dragConstraints={{ left: -600, right: 600, top: -100, bottom: 100 }}
-            bg={colors.cloudBlue}
+            bgGradient="linear(to-b, #00cccc, #007c9b)"
             transition={{
               duration: 0.7,
               type: "spring",
@@ -180,7 +178,7 @@ export default function Home() {
             justifyContent="center"
             borderRadius="50%"
             padding="5"
-            bg={colors.cloudPurple}
+            bgGradient="linear(to-b, #fff474, #f06553)"
             boxShadow="lg"
             drag
             dragConstraints={{

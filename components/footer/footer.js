@@ -9,25 +9,22 @@ const Footer = () => (
   <Box
     as="footer"
     role="contentinfo"
-    py="6"
-    px={{
-      base: "4",
-      md: "8",
-    }}
     bg={colors.olive}
+    height="14vh"
+    justifyItems="center"
   >
-    <Stack spacing="10" divider={<StackDivider />}>
-      <Stack
-        direction={{
-          base: "column-reverse",
-          md: "row",
-        }}
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Copyright />
-        <SocialMediaLinks />
-      </Stack>
+    <Stack
+      direction={{
+        base: "column-reverse",
+        md: "row",
+      }}
+      justifyContent="space-between"
+      alignItems="center"
+      paddingX="10"
+      height="100%"
+    >
+      <Copyright />
+      <SocialMediaLinks />
     </Stack>
   </Box>
 );
