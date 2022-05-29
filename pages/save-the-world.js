@@ -25,14 +25,89 @@ const toggleArrowVariants = {
   closed: { rotate: 0, transition: { duration: 0.2 } },
 };
 
+const ArrowHeading = ({ heading, isOpen }) => {
+  return (
+    <>
+      <MotionFlex layout>
+        <MotionIcon
+          icon={<AiOutlineDown />}
+          size="24px"
+          variant="unstyled"
+          variants={toggleArrowVariants}
+          initial="open"
+          animate={isOpen ? "closed" : "open"}
+        />
+        <Heading as="h4" size="md">
+          {heading}
+        </Heading>
+      </MotionFlex>
+    </>
+  );
+};
+
 export default function SaveTheWorld() {
-  const [areOpen, setAreOpen] = useState([false, false, false]);
-  const toggleOpenFirst = () =>
-    setAreOpen([!areOpen[0], areOpen[1], areOpen[2]]);
-  const toggleOpenSecond = () =>
-    setAreOpen([areOpen[0], !areOpen[1], areOpen[2]]);
-  const toggleOpenThird = () =>
-    setAreOpen([areOpen[0], areOpen[1], !areOpen[2]]);
+  const [areOpen, setAreOpen] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  const toggleOpen1 = () =>
+    setAreOpen([
+      !areOpen[0],
+      areOpen[1],
+      areOpen[2],
+      areOpen[3],
+      areOpen[4],
+      areOpen[5],
+    ]);
+  const toggleOpen2 = () =>
+    setAreOpen([
+      areOpen[0],
+      !areOpen[1],
+      areOpen[2],
+      areOpen[3],
+      areOpen[4],
+      areOpen[5],
+    ]);
+  const toggleOpen3 = () =>
+    setAreOpen([
+      areOpen[0],
+      areOpen[1],
+      !areOpen[2],
+      areOpen[3],
+      areOpen[4],
+      areOpen[5],
+    ]);
+  const toggleOpen4 = () =>
+    setAreOpen([
+      areOpen[0],
+      areOpen[1],
+      areOpen[2],
+      !areOpen[3],
+      areOpen[4],
+      areOpen[5],
+    ]);
+  const toggleOpen5 = () =>
+    setAreOpen([
+      areOpen[0],
+      areOpen[1],
+      areOpen[2],
+      areOpen[3],
+      !areOpen[4],
+      areOpen[5],
+    ]);
+  const toggleOpen6 = () =>
+    setAreOpen([
+      areOpen[0],
+      areOpen[1],
+      areOpen[2],
+      areOpen[3],
+      areOpen[4],
+      !areOpen[5],
+    ]);
 
   return (
     <>
@@ -47,6 +122,11 @@ export default function SaveTheWorld() {
         <Flex w="100%" justify="center" direction="row" paddingY={8}>
           <Stack w={["90%", "80%", "65%", "50%", "40%"]}>
             <Heading>Climate Change is today's problem.</Heading>
+            <script
+              src="https://climateclock.world/widget-v2.js"
+              async
+            ></script>
+            <climate-clock />
             <Text>
               Our tomorrow is in danger. Temperatures have risen by about 1.1°C
               since the 1850s. At this point, certain extreme weather
@@ -70,22 +150,13 @@ export default function SaveTheWorld() {
             <AnimateSharedLayout>
               <MotionList
                 layout
-                onClick={toggleOpenFirst}
+                onClick={toggleOpen1}
                 initial={{ borderRadius: 10 }}
               >
-                <MotionFlex layout>
-                  <MotionIcon
-                    icon={<AiOutlineDown />}
-                    size="24px"
-                    variant="unstyled"
-                    variants={toggleArrowVariants}
-                    initial="open"
-                    animate={areOpen[0] ? "closed" : "open"}
-                  />
-                  <Heading as="h4" size="md">
-                    Eliminate food waste.
-                  </Heading>
-                </MotionFlex>
+                <ArrowHeading
+                  heading="Eliminate food waste"
+                  isOpen={areOpen[0]}
+                />
                 <AnimatePresence>
                   {areOpen[0] && (
                     <MotionText
@@ -119,22 +190,13 @@ export default function SaveTheWorld() {
               </MotionList>
               <MotionList
                 layout
-                onClick={toggleOpenSecond}
+                onClick={toggleOpen2}
                 initial={{ borderRadius: 10 }}
               >
-                <MotionFlex layout>
-                  <MotionIcon
-                    icon={<AiOutlineDown />}
-                    size="24px"
-                    variant="unstyled"
-                    variants={toggleArrowVariants}
-                    initial="open"
-                    animate={areOpen[1] ? "closed" : "open"}
-                  />
-                  <Heading as="h4" size="md">
-                    Know where to throw.
-                  </Heading>
-                </MotionFlex>
+                <ArrowHeading
+                  heading="Know where to throw"
+                  isOpen={areOpen[1]}
+                />
                 <AnimatePresence>
                   {areOpen[1] && (
                     <MotionText
@@ -166,22 +228,13 @@ export default function SaveTheWorld() {
               </MotionList>
               <MotionList
                 layout
-                onClick={toggleOpenThird}
+                onClick={toggleOpen3}
                 initial={{ borderRadius: 10 }}
               >
-                <MotionFlex layout>
-                  <MotionIcon
-                    icon={<AiOutlineDown />}
-                    size="24px"
-                    variant="unstyled"
-                    variants={toggleArrowVariants}
-                    initial="open"
-                    animate={areOpen[2] ? "closed" : "open"}
-                  />
-                  <Heading as="h4" size="md">
-                    Reduce energy waste.
-                  </Heading>
-                </MotionFlex>
+                <ArrowHeading
+                  heading="Reduce energy waste."
+                  isOpen={areOpen[2]}
+                />
                 <AnimatePresence>
                   {areOpen[2] && (
                     <MotionText
@@ -196,30 +249,35 @@ export default function SaveTheWorld() {
                   )}
                 </AnimatePresence>
               </MotionList>
-              <MotionList layout>
-                <MotionFlex layout>
-                  <MotionIcon
-                    icon={<AiOutlineDown />}
-                    size="24px"
-                    variant="unstyled"
-                    variants={toggleArrowVariants}
-                    initial="open"
-                    animate={areOpen[3] ? "closed" : "open"}
-                  />
-                  <Heading as="h4" size="md">
-                    Eat more sustainable food options.
-                  </Heading>
-                </MotionFlex>
+              <MotionList
+                layout
+                onClick={toggleOpen4}
+                initial={{ borderRadius: 10 }}
+              >
+                <ArrowHeading
+                  heading="Eat more sustainble food options"
+                  isOpen={areOpen[3]}
+                />
               </MotionList>
-              <MotionList layout>
-                <MotionHeading as="h4" size="md" layout>
-                  Respect and protect nature.
-                </MotionHeading>
+              <MotionList
+                layout
+                onClick={toggleOpen5}
+                initial={{ borderRadius: 10 }}
+              >
+                <ArrowHeading
+                  heading="Respect and protect nature"
+                  isOpen={areOpen[4]}
+                />
               </MotionList>
-              <MotionList layout>
-                <MotionHeading as="h4" size="md" layout>
-                  Reduce, reuse and recycle.
-                </MotionHeading>
+              <MotionList
+                layout
+                onClick={toggleOpen6}
+                initial={{ borderRadius: 10 }}
+              >
+                <ArrowHeading
+                  heading="Reduce, reuse and recycle."
+                  isOpen={areOpen[5]}
+                />
               </MotionList>
               <MotionText layout>
                 Please consider donating to{" "}

@@ -92,7 +92,8 @@ export default function Bio() {
       <Fragment>
         <Flex w="100%" justify="center" direction="row" padding={8} wrap="wrap">
           <Grid
-            w={["90%", "1100px"]}
+            // TODO: add resize support
+            w={["90%", "1075px"]}
             templateColumns={["100%", "65% 35%"]}
             templateRows="repeat(10, 100px)"
             bgColor={colors.rifle}
