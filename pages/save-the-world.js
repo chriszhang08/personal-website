@@ -45,6 +45,21 @@ const ArrowHeading = ({ heading, isOpen }) => {
   );
 };
 
+const LinkedTooltip = ({ link, label, content }) => {
+  return (
+    <Tooltip as="a" label={label}>
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: "white" }}
+      >
+        {content}
+      </a>
+    </Tooltip>
+  );
+};
+
 export default function SaveTheWorld() {
   const [areOpen, setAreOpen] = useState([
     false,
@@ -131,16 +146,11 @@ export default function SaveTheWorld() {
               Our tomorrow is in danger. Temperatures have risen by about 1.1°C
               since the 1850s. At this point, certain extreme weather
               consequences are{" "}
-              <Tooltip label="changing rainfall patterns, melting of Arctic ice, acidification of oceans to name a few">
-                <a
-                  href="https://news.un.org/en/story/2021/08/1097362"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "white" }}
-                >
-                  irreversible
-                </a>
-              </Tooltip>
+              <LinkedTooltip
+                link="https://news.un.org/en/story/2021/08/1097362"
+                label="changing rainfall patterns, melting of Arctic ice, acidification of oceans to name a few"
+                content="irreversible"
+              />
               . But there are many extreme climate situations that we can still
               prevent.
             </Text>
@@ -165,25 +175,28 @@ export default function SaveTheWorld() {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                     >
-                      Simply growing the amount of food necessary to feed 7
-                      billion people contributes{" "}
-                      <Tooltip label="if this waste was its own country, it would be the world's 3rd most polluting country">
-                        <a
-                          href="https://www.universityofcalifornia.edu/longform/what-you-need-know-about-food-waste-and-climate-change"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ color: "white" }}
-                        >
-                          6.7%
-                        </a>
-                      </Tooltip>{" "}
+                      Just the amount of food waste we produce contributes to{" "}
+                      <LinkedTooltip
+                        link="https://www.universityofcalifornia.edu/longform/what-you-need-know-about-food-waste-and-climate-change"
+                        label="if this waste was its own country, it would be the world's 3rd most polluting country"
+                        content="6.7%"
+                      />{" "}
                       of the worlds carbon emissions. In the US, 85% of food
-                      waste occurs in stores, restaurants and homes. By throwing
+                      waste occurs in stores, restaurants and homes; the rest of
+                      the waste is from farming and distribution. By throwing
                       away food, not only does the energy used to make the food
-                      get wasted, but the decay of foods emits more greenhouse
-                      gasses. Not to mention, it disrespects the nature of the
-                      global food insecurity problem. How hard could it be to
-                      just buy and eat what you are able to?
+                      get wasted, but the decay of foods emits methane - a a
+                      pollutant at least 25 times more potent than carbon
+                      dioxide.{" "}
+                      <LinkedTooltip
+                        link="https://www.healthline.com/nutrition/composting-beginners-guide"
+                        label="see if your local municipality has a composting service"
+                        content="Composting"
+                      />{" "}
+                      is a great way to reduce the amount of food waste, and
+                      it's pretty easy to do. The most effective way, however,
+                      is just to buy what you can eat and watch out for those
+                      expiration dates.
                     </MotionText>
                   )}
                 </AnimatePresence>
@@ -208,20 +221,21 @@ export default function SaveTheWorld() {
                       While recycling is a great way to conserve natural
                       resources, if not done properly, it can actually harm the
                       environment. In 2018, just over 8 percent of the{" "}
-                      <Tooltip label="recycling plastics has many restrictions, which varies between who collects your recycling">
-                        <a
-                          href="https://environment.co/how-much-recycling-actually-gets-recycled/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ color: "white" }}
-                        >
-                          recyclable
-                        </a>
-                      </Tooltip>{" "}
+                      <LinkedTooltip
+                        link="https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling/plastics-material-specific-data"
+                        label="recycling plastics has many restrictions, which varies between who collects your recycling"
+                        content="recyclable"
+                      />{" "}
                       plastic was recycled. The rest of the recyclable plastic
                       gets thrown out. Read up on your local recycling
                       guidelines and take an extra second to properly sort your
-                      trash. Ann Arbor's recycling guidelines can be found here.
+                      trash. Ann Arbor's recycling guidelines can be found{" "}
+                      <LinkedTooltip
+                        link="https://www.recycleannarbor.org/a-z-recycling-guide"
+                        label="red solo cups and many other plastic types are NOT recyclable in Ann Arbor"
+                        content="here"
+                      />
+                      .
                     </MotionText>
                   )}
                 </AnimatePresence>
@@ -268,6 +282,37 @@ export default function SaveTheWorld() {
                   heading="Respect and protect nature"
                   isOpen={areOpen[4]}
                 />
+                <AnimatePresence>
+                  {areOpen[4] && (
+                    <MotionText
+                      layout
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      Thankfully, 13% of US greenhouse gas emissions are
+                      actually sucked up by US{" "}
+                      <LinkedTooltip
+                        link="https://drawdown.org/sectors/land-sinks#:~:text=Land%20can%20therefore%20be%20a,caused%20emissions%20to%20Earth%E2%80%94literally"
+                        label="land sinks sequester 24% of global emissions"
+                        content="forests and other lands"
+                      />
+                      . Carbon sequestration is a great way for us to fix the
+                      climate crisis forever, but part of that means we have to
+                      let nature be nature. Just like we are in a global
+                      economy, ecosystems are interconnected and delicate in
+                      their own way. Littering in Ann Arbor can lead to
+                      pollution of protected
+                      <LinkedTooltip
+                        link="https://www.michigan.gov/egle/about/organization/Water-Resources/Wetlands"
+                        label="disruption of these ecosystems can lead to ripple effects of ecosystems around the world"
+                        content="wetlands"
+                      />{" "}
+                      - one of the most productive ecosystems in the world. And
+                      of course, you have to save the turtles.
+                    </MotionText>
+                  )}
+                </AnimatePresence>
               </MotionList>
               <MotionList
                 layout

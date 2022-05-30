@@ -18,15 +18,6 @@ import { useInView } from "react-intersection-observer";
 // TODO implement intersection observer
 // idk what the fuck is going on here
 const MotionFlex = chakra(motion.div);
-const MotionStack = chakra(motion.div);
-const scrollVariants = {
-  hidden: { opacity: 0, y: 1000 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 1.2, type: "spring", damping: 20, stiffness: 40 },
-  },
-};
 
 const cardVariants = {
   offscreen: {
@@ -57,7 +48,7 @@ const ProjectCard = ({ title, description, link }) => {
       animate={controls}
       initial="offscreen"
       variants={cardVariants}
-      paddingY="2rem"
+      paddingBottom="1rem"
     >
       <Heading
         as="a"
