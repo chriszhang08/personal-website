@@ -192,7 +192,7 @@ export default function Bio() {
                 </Stack>
               </Stack>
               <a
-                href="https://drive.google.com/file/d/1C8SvnXeyqVhEltF6J4vyvygP-seUyLKh/view"
+                href="/W22_Transcript.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >

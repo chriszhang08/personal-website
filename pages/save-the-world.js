@@ -185,9 +185,13 @@ export default function SaveTheWorld() {
                       waste occurs in stores, restaurants and homes; the rest of
                       the waste is from farming and distribution. By throwing
                       away food, not only does the energy used to make the food
-                      get wasted, but the decay of foods emits methane - a a
-                      pollutant at least 25 times more potent than carbon
-                      dioxide.{" "}
+                      get wasted, but the decay of foods emits{" "}
+                      <LinkedTooltip
+                        link="https://www.factcheck.org/2018/09/how-potent-is-methane/"
+                        label="methane is at least 25 times more potent than carbon dioxide"
+                        content="methane"
+                      />
+                      .
                       <LinkedTooltip
                         link="https://www.healthline.com/nutrition/composting-beginners-guide"
                         label="see if your local municipality has a composting service"
@@ -302,7 +306,7 @@ export default function SaveTheWorld() {
                       let nature be nature. Just like we are in a global
                       economy, ecosystems are interconnected and delicate in
                       their own way. Littering in Ann Arbor can lead to
-                      pollution of protected
+                      pollution of protected{" "}
                       <LinkedTooltip
                         link="https://www.michigan.gov/egle/about/organization/Water-Resources/Wetlands"
                         label="disruption of these ecosystems can lead to ripple effects of ecosystems around the world"
