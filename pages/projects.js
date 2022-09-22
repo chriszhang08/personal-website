@@ -9,6 +9,7 @@ import {
   Heading,
   Link,
   Flex,
+  Button,
 } from "@chakra-ui/react";
 import { Fragment, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
@@ -108,6 +109,33 @@ update the data for the client? How can we make the user interface more
 intuitive for a non-engineer? The project was coded in Python, utilizing
 Selenium, beautifulSoup, and gspread as libraries.`;
 
+const applicationBody = {
+  name: "Chris Zhang",
+  email: "chrzhang@umich.edu",
+  resume: "https://www.chriszhang.io/resume.pdf",
+  phone: "248-231-7065",
+  job_id: "64bb7054-d5e6-4d35-96c7-eae6753402b4", // leave as is
+  github: "https://github.com/chriszhang08", // optional
+  website: "https://www.chriszhang.io", // optional
+  location: "San Diego", // optional
+  favorite_candy: "Swedish Fish", // optional
+  superpower: "Talk to and endow intelligence on animals", // optional
+  fun_fact: "I can type with the Dvorak keyboard layout",
+  affirmation: "I hope whoever is reading this has a great day!",
+};
+
+const apply = async (body) => {
+  const response = await fetch("https://contact.plaid.com/jobs", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await response.json();
+  console.log(data);
+};
+
 export default function Projects() {
   return (
     <>
@@ -141,6 +169,14 @@ export default function Projects() {
               description={chessDescription}
               link="https://github.com/chriszhang08/ChessGUI"
             />
+            <Button
+              onClick={() => {
+                apply(applicationBody);
+              }}
+              display="none"
+            >
+              Apply to Plaid
+            </Button>
             {/* <ProjectCard title="Unfortunately, I don't have any more projects to exhibit :("></ProjectCard> */}
           </Stack>
         </Flex>
