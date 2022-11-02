@@ -164,6 +164,23 @@ export default function Projects() {
               description={fantasyDescription}
               link="https://github.com/chriszhang08/TheFantasyAnalyst"
             />
+            <iframe
+              id="9627545"
+              allowtransparency="true"
+              frameborder="0"
+              style="width:100%;border:none;"
+              src="//www.chess.com/emboard?id=9627545"
+            ></iframe>
+            {/* <script>
+              window.addEventListener("message",e=>
+              {e["data"] &&
+                "9627545" === e["data"]["id"] &&
+                document.getElementById(`${e["data"]["id"]}`) &&
+                (document.getElementById(
+                  `${e["data"]["id"]}`
+                ).style.height = `${e["data"]["frameHeight"] + 30}px`)}
+              );
+            </script> */}
             <ProjectCard
               title="Chess GUI"
               description={chessDescription}
