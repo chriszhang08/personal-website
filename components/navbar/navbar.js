@@ -50,6 +50,7 @@ const MenuLinks = ({ isOpen, children, isLast, ...rest }) => {
       >
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/projects">Projects</MenuItem>
+        <MenuItem to="/gallery">Creative Gallery</MenuItem>
         <MenuItem to="/save-the-world">Save The World</MenuItem>
         <MenuItem to="/bio">About Me</MenuItem>
       </Stack>

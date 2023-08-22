@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Script from "next/script";
 import utilStyles from "../styles/utils.module.css";
 import {
   chakra,
@@ -168,10 +169,10 @@ export default function Projects() {
               id="9627545"
               allowtransparency="true"
               frameborder="0"
-              style="width:100%;border:none;"
+              style={{ width: `100%`, border: `none` }}
               src="//www.chess.com/emboard?id=9627545"
             ></iframe>
-            {/* <script>
+            {/* <Script>
               window.addEventListener("message",e=>
               {e["data"] &&
                 "9627545" === e["data"]["id"] &&
@@ -180,7 +181,7 @@ export default function Projects() {
                   `${e["data"]["id"]}`
                 ).style.height = `${e["data"]["frameHeight"] + 30}px`)}
               );
-            </script> */}
+            </Script> */}
             <ProjectCard
               title="Chess GUI"
               description={chessDescription}

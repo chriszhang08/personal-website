@@ -290,7 +290,7 @@ export default function Bio() {
                 showShadow={showShadow2}
                 setShowShadow={setShowShadow2}
                 radius={"118px"}
-                text="persistance"
+                text="persistence"
                 textSize={"xl"}
                 color={colors.olive}
                 topX={"-210px"}

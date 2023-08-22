@@ -273,7 +273,7 @@ export default function SaveTheWorld() {
                 initial={{ borderRadius: 10 }}
               >
                 <ArrowHeading
-                  heading="Eat more sustainble food options"
+                  heading="Eat more sustainable food options"
                   isOpen={areOpen[3]}
                 />
               </MotionList>
