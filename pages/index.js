@@ -29,16 +29,16 @@ export default function Home() {
         <title>Chris Zhang</title>
         <meta
           name="description"
-          content="Personal portfolio website for Chris Zhang, a computer science 
+          content="Personal portfolio website for Chris Zhang, a computer science
           environmental engineering major at the University of Michigan."
         />
       </Head>
-      <Fragment>
+      <div>
         <Stack
           direction={"row"}
           justifyContent="space-evenly"
           alignItems="center"
-          height="66vh"
+          height="100vh"
         >
           <MotionFlex
             width="300px"
@@ -84,7 +84,7 @@ export default function Home() {
                 fontWeight="bold"
                 textAlign="center"
               >
-                Creativity
+                Workshop
               </Text>
             </MotionFlex>
             <MotionFlex
@@ -146,7 +146,7 @@ export default function Home() {
                 fontWeight="bold"
                 textAlign="center"
               >
-                Empathy
+                Save the World
               </Text>
             </MotionFlex>
             <MotionFlex
@@ -171,8 +171,8 @@ export default function Home() {
             </MotionFlex>
           </MotionFlex>
           <MotionFlex
-            width="300px"
-            height="300px"
+            width="200px"
+            height="200px"
             flexDirection="column"
             textAlign="center"
             justifyContent="center"
@@ -200,7 +200,7 @@ export default function Home() {
             <MotionFlex
               alignSelf="center"
               position="relative"
-              top="22%"
+              top="60%"
               transition={{ duration: 0.7 }}
               initial={{ rotateY: 0 }}
               animate={{ rotateY: flip3 ? 0 : 180 }}
@@ -209,11 +209,11 @@ export default function Home() {
               <Text
                 as="a"
                 href="/projects"
-                fontSize="3xl"
+                fontSize="xl"
                 fontWeight="bold"
                 textAlign="center"
               >
-                Persistence
+                About me
               </Text>
             </MotionFlex>
             <MotionFlex
@@ -238,7 +238,7 @@ export default function Home() {
             </MotionFlex>
           </MotionFlex>
         </Stack>
-      </Fragment>
+      </div>
     </>
   );
 }
