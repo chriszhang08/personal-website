@@ -15,22 +15,11 @@ const customTheme = {
   },
 };
 
-const MotionImage = motion(Image);
 
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <Flex direction={"column"} bgColor={colors.sageL} flexFlow="column">
-        { /* LOGO */}
-        <a href="/gallery">
-          <MotionImage
-              src="/logo.PNG"
-              height={75}
-              width={150}
-              position="absolute"
-              whileTap={{ scale: 0.8 }}
-          />
-        </a>
         {/* fix link css */}
         <Component
           {...pageProps}

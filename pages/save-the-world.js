@@ -9,7 +9,7 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { Fragment, useState } from "react";
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import colors from "../styles/config/colors";
 import { AiOutlineDown } from "react-icons/ai";
 import Head from "next/head";
@@ -157,7 +157,6 @@ export default function SaveTheWorld() {
             <Heading>
               Here are things you can do to help save the world.
             </Heading>
-            <AnimateSharedLayout>
               <MotionList
                 layout
                 onClick={toggleOpen1}
@@ -334,7 +333,6 @@ export default function SaveTheWorld() {
                   The Ocean Cleanup
                 </Link>
               </MotionText>
-            </AnimateSharedLayout>
           </Stack>
         </Flex>
       </Fragment>

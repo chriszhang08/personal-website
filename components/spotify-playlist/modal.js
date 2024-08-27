@@ -25,7 +25,7 @@ const modal = {
 
 const Modal = ({ showModal, setShowModal }) => {
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode='wait'>
       {showModal && (
         <motion.div
           style={{
