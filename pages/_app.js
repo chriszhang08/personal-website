@@ -19,7 +19,7 @@ const customTheme = {
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <Flex direction={"column"} bgColor={colors.sageL} flexFlow="column">
+      <Flex direction={"column"} flexFlow="column">
         {/* fix link css */}
         <Component
           {...pageProps}
