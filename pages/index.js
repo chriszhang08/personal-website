@@ -8,6 +8,8 @@ import React, {Fragment, FC, useState} from "react";
 import colors from "../styles/config/colors";
 import {motion, useMotionValue, useTransform, useSpring, useTime} from "framer-motion";
 import Head from "next/head";
+import {useRouter} from "next/navigation";
+import Logo from "../components/Logo";
 
 const MotionFlex = motion(Flex);
 const MotionImage = motion(Image);
@@ -35,6 +37,8 @@ const BackgroundDiv = ({children}) => {
 
 export default function Home() {
 
+  const router = useRouter();
+
   const transitionValues = {
     duration: 2,
     repeat: Infinity,
@@ -51,19 +55,7 @@ export default function Home() {
       </Head>
       <BackgroundDiv>
         { /* LOGO */}
-        <a href="/gallery">
-          <MotionImage
-            src="/logo.PNG"
-            height={75}
-            width={150}
-            position="absolute"
-            bottom="0"
-            right="0"
-            margin="10px"
-            whileTap={{scale: 0.8}}
-            _hover={{filter: "brightness(0) invert(1)"}}
-          />
-        </a>
+        <Logo/>
         <Stack
           direction={"row"}
           justifyContent="space-evenly"
@@ -90,12 +82,15 @@ export default function Home() {
             animate={{
               y: [-10, 10, -10],
             }}
-            whileHover={{color: "#ffffff"}}
-            whileTap={{scale: 0.95}}
+            whileHover={{ color: "#ffffff" }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              window.location.href = "https://github.com/chriszhang08";
+            }}
           >
-            <a href="/projects" style={{fontSize: "3xl", fontWeight: "bold"}}>
+            <div style={{ fontSize: "3xl", fontWeight: "bold" }}>
               Workshop
-            </a>
+            </div>
           </motion.div>
           <motion.div
             style={{
@@ -122,10 +117,13 @@ export default function Home() {
             }}
             whileHover={{color: "#ffffff"}}
             whileTap={{scale: 0.95}}
+            onClick={() => {
+              router.push("/save-the-world");
+            }}
           >
-            <a href="/save-the-world" style={{fontSize: "3xl", fontWeight: "bold"}}>
+            <div style={{fontSize: "3xl", fontWeight: "bold"}}>
               Save the World
-            </a>
+            </div>
           </motion.div>
 
           {/* Second MotionFlex converted to motion.div */}
@@ -153,10 +151,13 @@ export default function Home() {
             }}
             whileHover={{color: "#ffffff"}}
             whileTap={{scale: 0.95}}
+            onClick={() => {
+              router.push("/bio");
+            }}
           >
-            <a href="/bio" style={{fontSize: "xl", fontWeight: "bold"}}>
+            <div style={{fontSize: "xl", fontWeight: "bold"}}>
               About me
-            </a>
+            </div>
           </motion.div>
         </Stack>
       </BackgroundDiv>

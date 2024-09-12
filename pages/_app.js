@@ -2,30 +2,45 @@ import "../styles/global.css";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import Head from "next/head";
-import {ChakraProvider, Stack, Flex, theme, Image} from "@chakra-ui/react";
-import colors from "../styles/config/colors";
+import { ChakraProvider, Flex, theme as chakraTheme } from "@chakra-ui/react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import React from "react";
 import { motion } from "framer-motion";
 
-const customTheme = {
-  ...theme,
+// Custom Chakra UI theme
+const customChakraTheme = {
+  ...chakraTheme,
   colors: {
-    ...theme.colors,
-    purple: "#692ba8",
+    ...chakraTheme.colors,
+    purple: "#692ba8", // Custom color override
   },
 };
 
+// Custom Material-UI theme
+const customMuiTheme = createTheme({
+  palette: {
+    mode: "light", // Or 'dark' depending on preference
+    primary: {
+      main: "#692ba8", // Custom primary color
+    },
+  },
+});
 
 export default function App({ Component, pageProps }) {
   return (
-    <ChakraProvider theme={theme}>
-      <Flex direction={"column"} flexFlow="column">
-        {/* fix link css */}
-        <Component
-          {...pageProps}
-        />
-        {/*<Footer flexGrow={0} flexShrink={1} flexBasis="40px" />*/}
-      </Flex>
+    <ChakraProvider theme={customChakraTheme}>
+      <ThemeProvider theme={customMuiTheme}>
+        <CssBaseline />
+        <Flex direction={"column"} flexFlow="column" minHeight="100vh">
+          <Head>
+            <title>Your Website</title>
+            <meta name="description" content="Description of your website" />
+          </Head>
+          {/* Main content */}
+          <Component {...pageProps} />
+        </Flex>
+      </ThemeProvider>
     </ChakraProvider>
   );
 }
