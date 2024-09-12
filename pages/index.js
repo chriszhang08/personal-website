@@ -64,15 +64,10 @@ export default function Home() {
         >
           <motion.div
             style={{
-              width: "275px",
-              height: "275px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               textAlign: "center",
-              borderRadius: "50%",
-              padding: "5px",
-              background: "linear-gradient(to bottom, #f0efe2, #8c8c88)",
               boxShadow: "lg",
               cursor: "pointer",
             }}
@@ -88,22 +83,23 @@ export default function Home() {
               window.location.href = "https://github.com/chriszhang08";
             }}
           >
+            <Image
+              src="/moon.svg"
+              alt="Moon Icon"
+              width={250}  // Adjust as necessary
+              height={250}  // Adjust as necessary
+            />
             <div style={{ fontSize: "3xl", fontWeight: "bold" }}>
               Workshop
             </div>
           </motion.div>
           <motion.div
             style={{
-              width: "330px",
-              height: "330px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              textAlign: "center",
-              borderRadius: "50%",
-              padding: "5px",
+              alignItems: "center",
               boxShadow: "lg",
-              background: "linear-gradient(to bottom, #00cccc, #007c9b)",
               position: "relative",
               top: "85px",
               right: "10px",
@@ -115,13 +111,19 @@ export default function Home() {
             animate={{
               y: [-10, 10, -10],
             }}
-            whileHover={{color: "#ffffff"}}
-            whileTap={{scale: 0.95}}
+            whileHover={{ color: "#ffffff" }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => {
               router.push("/save-the-world");
             }}
           >
-            <div style={{fontSize: "3xl", fontWeight: "bold"}}>
+            <Image
+              src="/earth.svg"
+              alt="Earth Icon"
+              width={350}  // Adjust as necessary
+              height={350}  // Adjust as necessary
+            />
+            <div style={{ fontSize: "3xl", fontWeight: "bold" }}>
               Save the World
             </div>
           </motion.div>
@@ -129,15 +131,10 @@ export default function Home() {
           {/* Second MotionFlex converted to motion.div */}
           <motion.div
             style={{
-              width: "200px",
-              height: "200px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               textAlign: "center",
-              borderRadius: "50%",
-              padding: "5px",
-              background: "linear-gradient(to bottom, #fff474, #f06553)",
               boxShadow: "lg",
               position: "relative",
               top: "-150px",
@@ -155,8 +152,14 @@ export default function Home() {
               router.push("/bio");
             }}
           >
-            <div style={{fontSize: "xl", fontWeight: "bold"}}>
-              About me
+            <Image
+              src="/sun.svg"
+              alt="Sun Icon"
+              width={200}  // Adjust as necessary
+              height={200}  // Adjust as necessary
+            />
+            <div style={{ fontSize: "3xl", fontWeight: "bold" }}>
+              About Me
             </div>
           </motion.div>
         </Stack>

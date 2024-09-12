@@ -85,7 +85,7 @@ export default function Bio() {
         />
         <meta
           name="author"
-          content="Chris Zhang, born in Ann Arbor, Michigan. Raised in Novi, Michigan, attended 
+          content="Chris Zhang, born in Ann Arbor, Michigan. Raised in Novi, Michigan, attended
       Novi High School. Currently living in Ann Arbor, Michigan, attending the University of Michigan."
         />
       </Head>
@@ -192,7 +192,7 @@ export default function Bio() {
                 </Stack>
               </Stack>
               <a
-                href="/W22_Transcript.pdf"
+                href="/UM_BSE.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
