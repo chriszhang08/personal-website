@@ -19,6 +19,17 @@ body {
   }
 }
 
+@keyframes cityPopIn {
+  from {
+    transform: translateX(26px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 * {
   box-sizing: border-box;
 }

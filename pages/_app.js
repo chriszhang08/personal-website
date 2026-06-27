@@ -7,6 +7,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import React from "react";
 import { motion } from "framer-motion";
+import { Analytics } from "@vercel/analytics/react";
 
 // Custom Chakra UI theme
 const customChakraTheme = {
@@ -40,6 +41,7 @@ export default function App({ Component, pageProps }) {
           <Navbar />
           {/* Main content */}
           <Component {...pageProps} />
+          <Analytics />
         </Flex>
       </ThemeProvider>
     </ChakraProvider>

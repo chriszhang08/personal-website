@@ -97,29 +97,47 @@ const Navbar = () => {
         href="/"
         style={{
           display: "flex",
-          flexDirection: "column",
-          lineHeight: 1.08,
+          alignItems: "center",
+          gap: 12,
           textDecoration: "none",
         }}
       >
+        <img
+          src="/logo.PNG"
+          alt="Chris Zhang logo"
+          style={{
+            height: 40,
+            width: "auto",
+            display: "block",
+            filter: "invert(1) brightness(1.1)",
+          }}
+        />
         <span
           style={{
-            fontWeight: 700,
-            fontSize: 16,
-            color: "#fff",
-            letterSpacing: ".01em",
+            display: "flex",
+            flexDirection: "column",
+            lineHeight: 1.08,
           }}
         >
-          Chris Zhang
-        </span>
-        <span
-          style={{
-            fontSize: 11,
-            color: "rgba(255,255,255,.5)",
-            letterSpacing: ".02em",
-          }}
-        >
-          Advancing the energy transition
+          <span
+            style={{
+              fontWeight: 700,
+              fontSize: 16,
+              color: "#fff",
+              letterSpacing: ".01em",
+            }}
+          >
+            Chris Zhang
+          </span>
+          <span
+            style={{
+              fontSize: 11,
+              color: "rgba(255,255,255,.5)",
+              letterSpacing: ".02em",
+            }}
+          >
+            Advancing the energy transition
+          </span>
         </span>
       </Link>
 
