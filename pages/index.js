@@ -1,169 +1,126 @@
-import utilStyles from "../styles/utils.module.css";
-import {
-  Text,
-  Stack,
-  Flex, Image,
-} from "@chakra-ui/react";
-import React, {Fragment, FC, useState} from "react";
-import colors from "../styles/config/colors";
-import {motion, useMotionValue, useTransform, useSpring, useTime} from "framer-motion";
 import Head from "next/head";
-import {useRouter} from "next/navigation";
-import Logo from "../components/Logo";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
-const MotionFlex = motion(Flex);
-const MotionImage = motion(Image);
+const SpinningGlobe = dynamic(() => import("../components/SpinningGlobe"), {
+  ssr: false,
+});
 
+function Stars({ count = 180 }) {
+  const [stars, setStars] = useState([]);
 
-// Create a custom BackgroundDiv component
-const BackgroundDiv = ({children}) => {
+  useEffect(() => {
+    const colors = [
+      "#ffffff",
+      "#ffffff",
+      "#ffffff",
+      "#d9e6ff",
+      "#fff0c2",
+      "#cdeaf2",
+    ];
+    setStars(
+      Array.from({ length: count }, () => {
+        const size = (Math.random() * 1.8 + 0.6).toFixed(2);
+        return {
+          left: (Math.random() * 100).toFixed(2),
+          top: (Math.random() * 100).toFixed(2),
+          size,
+          duration: (1.8 + Math.random() * 3.4).toFixed(2),
+          delay: (Math.random() * 4).toFixed(2),
+          color: colors[(Math.random() * colors.length) | 0],
+        };
+      })
+    );
+  }, [count]);
+
   return (
     <div
       style={{
-        backgroundImage: "url('/space.jpg')", // Replace with the actual path of the starry background
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        minHeight: "100vh",
-        justifyContent: "center",
-        alignItems: "center",
-        color: "white", // Text color for better visibility
+        position: "absolute",
+        inset: 0,
+        zIndex: 1,
+        pointerEvents: "none",
       }}
     >
-      {children}
+      {stars.map((s, i) => (
+        <span
+          key={i}
+          style={{
+            position: "absolute",
+            left: `${s.left}%`,
+            top: `${s.top}%`,
+            width: `${s.size}px`,
+            height: `${s.size}px`,
+            borderRadius: "50%",
+            background: s.color,
+            boxShadow: `0 0 ${(s.size * 2).toFixed(1)}px ${s.color}`,
+            animation: `tw ${s.duration}s ease-in-out ${s.delay}s infinite`,
+          }}
+        />
+      ))}
     </div>
   );
-};
+}
 
 export default function Home() {
-
-  const router = useRouter();
-
-  const transitionValues = {
-    duration: 2,
-    repeat: Infinity,
-  };
   return (
     <>
       <Head>
         <title>Chris Zhang</title>
         <meta
           name="description"
-          content="Personal portfolio website for Chris Zhang, a computer science
-          graduate from the University of Michigan."
+          content="Chris Zhang — advancing the energy transition."
         />
       </Head>
-      <BackgroundDiv>
-        { /* LOGO */}
-        <Logo/>
-        <Stack
-          direction={"row"}
-          justifyContent="space-evenly"
-          alignItems="center"
-          height="100vh"
-        >
-          <motion.div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              textAlign: "center",
-              boxShadow: "lg",
-              cursor: "pointer",
-            }}
-            transition={{
-              y: transitionValues,
-            }}
-            animate={{
-              y: [-10, 10, -10],
-            }}
-            whileHover={{ color: "#ffffff" }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              window.location.href = "https://github.com/chriszhang08";
-            }}
-          >
-            <Image
-              src="/moon.svg"
-              alt="Moon Icon"
-              width={250}  // Adjust as necessary
-              height={250}  // Adjust as necessary
-            />
-            <div style={{ fontSize: "3xl", fontWeight: "bold" }}>
-              Workshop
-            </div>
-          </motion.div>
-          <motion.div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              boxShadow: "lg",
-              position: "relative",
-              top: "85px",
-              right: "10px",
-              cursor: "pointer",
-            }}
-            transition={{
-              y: transitionValues,
-            }}
-            animate={{
-              y: [-10, 10, -10],
-            }}
-            whileHover={{ color: "#ffffff" }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              router.push("/save-the-world");
-            }}
-          >
-            <Image
-              src="/earth.svg"
-              alt="Earth Icon"
-              width={350}  // Adjust as necessary
-              height={350}  // Adjust as necessary
-            />
-            <div style={{ fontSize: "3xl", fontWeight: "bold" }}>
-              Save the World
-            </div>
-          </motion.div>
 
-          {/* Second MotionFlex converted to motion.div */}
-          <motion.div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              textAlign: "center",
-              boxShadow: "lg",
-              position: "relative",
-              top: "-150px",
-              cursor: "pointer",
-            }}
-            transition={{
-              y: transitionValues,
-            }}
-            animate={{
-              y: [-10, 10, -10],
-            }}
-            whileHover={{color: "#ffffff"}}
-            whileTap={{scale: 0.95}}
-            onClick={() => {
-              router.push("/bio");
-            }}
-          >
-            <Image
-              src="/sun.svg"
-              alt="Sun Icon"
-              width={200}  // Adjust as necessary
-              height={200}  // Adjust as necessary
-            />
-            <div style={{ fontSize: "3xl", fontWeight: "bold" }}>
-              About Me
-            </div>
-          </motion.div>
-        </Stack>
-      </BackgroundDiv>
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          overflow: "hidden",
+          fontFamily: "Manrope, system-ui, sans-serif",
+          background:
+            "radial-gradient(ellipse 120% 90% at 50% 22%, #1c1636 0%, #110d24 38%, #08061333 64%, #050409 100%)",
+        }}
+      >
+        <Stars />
+
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "53%",
+            width: "min(82vh, 820px)",
+            height: "min(82vh, 820px)",
+            transform: "translate(-50%, -50%)",
+            borderRadius: "50%",
+            zIndex: 2,
+            pointerEvents: "none",
+            background:
+              "radial-gradient(circle, rgba(95,208,224,.20) 0%, rgba(95,208,224,.06) 42%, rgba(95,208,224,0) 64%)",
+            filter: "blur(4px)",
+          }}
+        />
+
+        <SpinningGlobe />
+
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            bottom: 22,
+            transform: "translateX(-50%)",
+            zIndex: 6,
+            fontSize: 12,
+            letterSpacing: ".06em",
+            color: "rgba(255,255,255,.4)",
+            pointerEvents: "none",
+            textTransform: "uppercase",
+          }}
+        >
+          Drag to spin
+        </div>
+      </div>
     </>
   );
 }

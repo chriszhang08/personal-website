@@ -37,6 +37,7 @@ export default function App({ Component, pageProps }) {
             <title>Your Website</title>
             <meta name="description" content="Description of your website" />
           </Head>
+          <Navbar />
           {/* Main content */}
           <Component {...pageProps} />
         </Flex>
