@@ -19,6 +19,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Modal from "../components/spotify-playlist/modal";
 import Head from "next/head";
+import { media } from "../lib/media";
 
 const MotionFlex = motion(Flex);
 
@@ -138,7 +139,7 @@ export default function Bio() {
             </GridItem>
             <GridItem rowSpan={3} colSpan={1}>
               <Flex borderWidth={5} borderColor={colors.khaki}>
-                <Image src="/propic.PNG" backgroundSize={"cover"} />
+                <Image src={media("propic.png")} backgroundSize={"cover"} />
               </Flex>
             </GridItem>
             <GridItem rowSpan={3} padding={8} bgColor={colors.khaki}>
@@ -192,7 +193,7 @@ export default function Bio() {
                 </Stack>
               </Stack>
               <a
-                href="/UM_BSE.pdf"
+                href={media("UM_BSE.pdf")}
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+
+const ARCHIVE_ITEMS = [
+  { href: "/bio", label: "About Me" },
+  { href: "/gallery", label: "Creative Gallery" },
+];
 
 const linkBase = {
   textDecoration: "none",
@@ -36,6 +41,115 @@ const NavLink = ({ href, active, children }) => (
     {children}
   </Link>
 );
+
+const ArchiveDropdown = ({ activePath }) => {
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef(null);
+  const active = ARCHIVE_ITEMS.some((i) => i.href === activePath);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target)) setOpen(false);
+    };
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <div ref={wrapRef} style={{ position: "relative" }}>
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        style={{
+          ...linkBase,
+          fontWeight: active ? 600 : 500,
+          color: active ? "#fff" : "rgba(255,255,255,.72)",
+          background: "transparent",
+          border: 0,
+          cursor: "pointer",
+          font: "inherit",
+        }}
+        onMouseEnter={(e) => {
+          if (!active) {
+            e.currentTarget.style.color = "#fff";
+            e.currentTarget.style.background = "rgba(255,255,255,.07)";
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!active) {
+            e.currentTarget.style.color = "rgba(255,255,255,.72)";
+            e.currentTarget.style.background = "transparent";
+          }
+        }}
+      >
+        Archive ▾
+      </button>
+      {open && (
+        <div
+          style={{
+            position: "absolute",
+            top: "calc(100% + 6px)",
+            right: 0,
+            minWidth: 200,
+            background: "rgba(17,13,33,.96)",
+            border: "1px solid rgba(255,255,255,.1)",
+            borderRadius: 12,
+            padding: 6,
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            boxShadow: "0 18px 50px rgba(0,0,0,.5)",
+          }}
+        >
+          <div
+            style={{
+              fontSize: 10,
+              letterSpacing: ".1em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,.35)",
+              padding: "8px 10px 4px",
+            }}
+          >
+            Previous site
+          </div>
+          {ARCHIVE_ITEMS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              style={{
+                display: "block",
+                textDecoration: "none",
+                fontSize: 13,
+                color: "rgba(255,255,255,.82)",
+                padding: "8px 10px",
+                borderRadius: 7,
+                fontFamily: "Manrope, system-ui, sans-serif",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,.07)";
+                e.currentTarget.style.color = "#fff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "rgba(255,255,255,.82)";
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const SocialIcon = ({ href, title, hoverColor, children }) => (
   <a
@@ -103,7 +217,7 @@ const Navbar = () => {
         }}
       >
         <img
-          src="/logo.PNG"
+          src="/logo.png"
           alt="Chris Zhang logo"
           style={{
             height: 40,
@@ -151,9 +265,7 @@ const Navbar = () => {
         >
           Save the World
         </NavLink>
-        <NavLink href="/bio" active={path === "/bio"}>
-          Archive
-        </NavLink>
+        <ArchiveDropdown activePath={path} />
 
         <div
           style={{

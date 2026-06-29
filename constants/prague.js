@@ -26,7 +26,7 @@ const prague = {
     },
     {
       type: "image",
-      src: "/travelpics/prague-film.jpg",
+      src: "travelpics/prague-film.jpg",
       alt: "Me directing a short film in Prague",
     },
     {

@@ -1,121 +1,202 @@
-import utilStyles from "../styles/utils.module.css";
-import {
-  ChakraProvider,
-  Text,
-  Stack,
-  Heading,
-  Flex,
-  ListItem,
-  UnorderedList,
-  Tooltip,
-  Grid,
-  GridItem,
-  Button,
-  Image,
-} from "@chakra-ui/react";
-import { Fragment } from "react";
-import colors from "../styles/config/colors";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import Modal from "../components/spotify-playlist/modal";
+// Archived creative gallery — frosted-card grid styled to match the home-page popups.
+// Each entry: { src, title?, description?, href? } — render is uniform.
+// `src` is a relative path resolved through media() — works against /public/ in dev
+// (when NEXT_PUBLIC_MEDIA_URL is unset) and against Vercel Blob in production.
 import Head from "next/head";
+import { media } from "../lib/media";
 
-let mabypark = `Maby Park and Hotel, Sweden
+const POSTERS = [
+  {
+    src: "movieposter/fmrfox.png",
+    title: "Fantastic Mr. Fox",
+    description:
+      "My favorite Wes Anderson film, and my first movie poster ever made. I wanted it to capture his cinematography style, so I centered the tree per his framing.",
+  },
+  {
+    src: "movieposter/coco.png",
+    title: "Coco",
+  },
+  {
+    src: "movieposter/rat.png",
+    title: "Ratatouille",
+  },
+  {
+    src: "movieposter/soul.png",
+    title: "Soul",
+  },
+];
 
-I think we all like to believe that Sweden is this country that has everything figured out and is just
-miles better than the United States. So naturally this puts all of
-its facilities under more scrutiny by me. This was my hotel room on
-a layover flight in the greater Stockholm area. I thought the
-bathroom design choices were so interesting that it warranted itself
-as its first entry in a journal about culture and design choices
-from around the world. The very first thing I noticed was how the
-shower and toilet were detached from the main room, yet it wasn’t a
-hostel. I wonder if design choices like this are common in Sweden.
-If they are, it would indicate that the culture and economy in
-Sweden allows for a clean bathroom where the workforce is ample and
-common enough to keep these facilities hygienic. Because the
-bathroom was much more hygienic then any hostel bathroom I’ve been
-in (save one). The next thing I noticed was that there was no
-toilet. The toilet was itself detached from the shower room, and
-they were up and down the hall - something uncommon in Western hotel
-rooms. Is it like a don’t shit where you eat kind of thing? Next, as
-it is for all showers that are not mine, I had to figure out how to
-get the hot and cold water working. The awfully unique thing I
-noticed was that this shower worked by pressing a button, to which
-the water would automatically shut off after 20 or so seconds. I’m
-really a fan of this design because it incentives users to take
-shorter showers. It is an institutional behavior change design
-choice. I suspect that the button would shut off faster if hotter
-water was used. Without a doubt, I believe that if such a design
-were mandatory world wide, we would save a lot of water in the
-shower. The only other thing worth talking about in the bathroom was
-how there was no inside handle. There exists a stereotype where all
-Scandinavians are these tall blonde models. I wonder, are buildings
-here specifically designed for this genetic body type? I’ll put it
-this way, if you were under 5’4”, you would struggle to close the
-shower door. I think all in all, this facility is much more
-sustainable than any comparable facility in the US. Yet, my
-experience wasn’t more unenjoyable, and if anything, I found myself
-enjoying this kind of design more. There is something to be said
-about how my hotel room is the same quality as a Swedish prison
-room, or how I’m not sure how I’ll sleep on that narrow ass bed
-tonight, but as with any country, there are its pros and cons.`;
+const MABYPARK_NOTE = `Maby Park and Hotel, Sweden — the kind of design choice you only notice on a layover. Shower and toilet detached from the room. Shower water shuts off after 20 seconds. Door handle so high you'd struggle if you were under 5'4". More sustainable than any comparable US facility, and I genuinely enjoyed it more.`;
 
-export default function Bio() {
+function Card({ src, title, description, href, children }) {
+  const inner = (
+    <div
+      style={{
+        background: "rgba(15,12,28,.86)",
+        backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)",
+        border: "1px solid rgba(255,255,255,.13)",
+        borderRadius: 18,
+        overflow: "hidden",
+        boxShadow: "0 24px 70px rgba(0,0,0,.35)",
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        transition: "transform .2s, border-color .2s",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "translateY(-3px)";
+        e.currentTarget.style.borderColor = "rgba(255,255,255,.22)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.borderColor = "rgba(255,255,255,.13)";
+      }}
+    >
+      {src && (
+        <div style={{ background: "rgba(255,255,255,.04)" }}>
+          <img
+            src={media(src)}
+            alt={title || ""}
+            style={{ width: "100%", display: "block" }}
+          />
+        </div>
+      )}
+      {(title || description || children) && (
+        <div style={{ padding: 18 }}>
+          {title && (
+            <div
+              style={{
+                fontSize: 15,
+                fontWeight: 700,
+                color: "#fff",
+                marginBottom: description || children ? 8 : 0,
+                letterSpacing: ".01em",
+              }}
+            >
+              {title}
+            </div>
+          )}
+          {description && (
+            <p
+              style={{
+                fontSize: 13,
+                lineHeight: 1.55,
+                color: "rgba(255,255,255,.66)",
+                margin: 0,
+              }}
+            >
+              {description}
+            </p>
+          )}
+          {children}
+        </div>
+      )}
+    </div>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ textDecoration: "none", display: "block", height: "100%" }}
+      >
+        {inner}
+      </a>
+    );
+  }
+  return inner;
+}
+
+function Section({ title, children }) {
+  return (
+    <section style={{ marginBottom: 56 }}>
+      <h2
+        style={{
+          fontSize: 13,
+          fontWeight: 600,
+          letterSpacing: ".18em",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,.5)",
+          margin: 0,
+          marginBottom: 20,
+        }}
+      >
+        {title}
+      </h2>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+          gap: 18,
+        }}
+      >
+        {children}
+      </div>
+    </section>
+  );
+}
+
+export default function Gallery() {
   return (
     <>
       <Head>
-        <title>About Me</title>
+        <title>Creative Gallery — Chris Zhang</title>
         <meta
           name="description"
-          content="A gallery for my creative outlets, which include traveling and graphic design."
-        />
-        <meta
-          name="author"
-          content="Chris Zhang, born in Ann Arbor, Michigan. Raised in Novi, Michigan, attended 
-        Novi High School. Currently living in Ann Arbor, Michigan, attending the University of Michigan. 
-        Worked at NextEra Energy, the Energy and Water Innovation Lab for Oracle, and as a Teaching Aide for 
-        EECS 280 at Michigan. Passionate about education and energy."
+          content="Archived creative work — movie poster designs and travel notes."
         />
       </Head>
-      <Fragment>
-        <Flex
-          w="100%"
-          justify="center"
-          direction="column"
-          padding={8}
-          wrap="wrap"
-        >
-          <Heading textAlign="center" paddingBottom={6}>
-            Movie Poster NFT Collection
-          </Heading>
-          <Grid templateColumns="1fr 1fr 1fr 1fr" gap={4}>
-            <GridItem>
-              <Image src="/movieposter/fmrfox.PNG" backgroundSize={"cover"} />
-              <Text>
-                My favorite Wes Anderson film ever, and my first movie poster
-                ever made. I wanted the poster to capture his film style, so I
-                centered the tree as is per his cinematography style.
-              </Text>
-              <Button>Buy</Button>
-            </GridItem>
-            <GridItem>
-              <Image src="/movieposter/coco.PNG" backgroundSize={"cover"} />
-            </GridItem>
-            <GridItem>
-              <Image src="/movieposter/rat.PNG" backgroundSize={"cover"} />
-            </GridItem>
-            <GridItem>
-              <Image src="/movieposter/soul.PNG" backgroundSize={"cover"} />
-            </GridItem>
-          </Grid>
-          <Heading textAlign="center" paddingBottom={6}>
-            Travel Collection
-          </Heading>
-          <Heading as="h3">Sweden</Heading>
-          <Text>{mabypark}</Text>
-        </Flex>
-      </Fragment>
+
+      <main
+        style={{
+          minHeight: "100vh",
+          padding: "110px 26px 80px",
+          background:
+            "radial-gradient(ellipse 120% 90% at 50% 22%, #1c1636 0%, #110d24 38%, #08061333 64%, #050409 100%)",
+          fontFamily: "Manrope, system-ui, sans-serif",
+          color: "#fff",
+        }}
+      >
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <header style={{ marginBottom: 48 }}>
+            <div
+              style={{
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: ".14em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,.4)",
+                marginBottom: 8,
+              }}
+            >
+              Archive · Creative Gallery
+            </div>
+            <h1
+              style={{
+                fontSize: 36,
+                fontWeight: 800,
+                margin: 0,
+                lineHeight: 1.1,
+              }}
+            >
+              Things I've made on the side.
+            </h1>
+          </header>
+
+          <Section title="Movie Poster Collection">
+            {POSTERS.map((p) => (
+              <Card key={p.src} {...p} />
+            ))}
+          </Section>
+
+          <Section title="Travel Notes">
+            <Card title="Maby Park · Sweden" description={MABYPARK_NOTE} />
+          </Section>
+        </div>
+      </main>
     </>
   );
 }

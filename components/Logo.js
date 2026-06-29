@@ -8,7 +8,7 @@ const Logo = () => {
   return (
     <a href="/">
       <MotionImage
-        src="/logo.PNG"
+        src="/logo.png"
         height={75}
         width={150}
         position="absolute"

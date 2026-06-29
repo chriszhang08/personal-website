@@ -27,7 +27,7 @@ const calgary = {
     },
     // {
     //   type: "image",
-    //   src: "/travelpics/calgary-hydrogen.jpg",
+    //   src: "travelpics/calgary-hydrogen.jpg",
     //   alt: "Me at the Canadian Hydrogen Convention",
     // },
     {

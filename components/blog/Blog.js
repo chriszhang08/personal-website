@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { media } from '../../lib/media';
 
 export default function ImgMediaCard() {
   return (
@@ -14,7 +15,7 @@ export default function ImgMediaCard() {
           component="img"
           alt="substack-1"
           height="100"
-          image="/bhutan.jpg"
+          image={media("bhutan.jpg")}
         />
         <CardContent>
           <Typography variant="body2" sx={{color: 'text.secondary'}}>

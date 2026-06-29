@@ -8,6 +8,7 @@
 //   { type: 'link-card',  href, eyebrow, eyebrowColor?, title, description?, body?, cta? }
 //   { type: 'iframe',     src, title?, aspectRatio? }  // aspectRatio defaults to '16/9'
 import React from "react";
+import { media } from "../lib/media";
 
 function HeaderBlock({ text, accent }) {
   return (
@@ -104,7 +105,7 @@ function ImageBlock({ src, alt, caption }) {
         }}
       >
         <img
-          src={src}
+          src={media(src)}
           alt={alt || ""}
           style={{ width: "100%", display: "block" }}
         />
