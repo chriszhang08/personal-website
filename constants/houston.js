@@ -30,12 +30,13 @@ const houston = {
     },
     {
       type: "paragraph",
-      text: `Houston is where energy happens — it's gritty, pragmatic, 
-      and unapologetically committed to getting things done. 
-      The city doesn't care about your excuses, it cares about results. 
-      That mentality seeped into the work. By summer's end, I understood 
-      that impact isn't measured in lines of code; it's measured in how 
-      many traders can make better decisions because of what you shipped.`,
+      text: `This experience really put into perspective how much I 
+      still have to learn about the energy industry. It exposed me to the
+      financial and operational risks associated with keeping the lights on - 
+      something I think I really took for granted before. Further, it was my
+      first time in Texas, and it truly did not disappoint. I was pleasantly surprised
+      by how different it was to my home state of Michigan, exposing me to a whole new 
+      culture within the United States.`,
     },
   ],
 };
