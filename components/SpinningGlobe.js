@@ -15,22 +15,60 @@ const COUNTRIES_URL =
   "https://unpkg.com/three-globe/example/country-polygons/ne_110m_admin_0_countries.geojson";
 
 const PIN_SIZE = 14;
+const HOME_SIZE = 22;
+const LOGO_SIZE = 26;
+
+// TODO: replace with the actual uploaded filename for the Michigan M asset.
+const MICHIGAN_M_SRC = "/michigan-m.png";
+
+const PROFESSIONAL_IDS = new Set(["houston", "jupiter"]);
+const TRAVEL_IDS = new Set(["calgary", "prague"]);
+const HOME_IDS = new Set(["london"]);
+const LOGO_IDS = new Set(["annarbor"]);
+
+function dotMarkup(color, size) {
+  return `<div style="width:${size}px;height:${size}px;border-radius:50%;background:${color};border:2px solid rgba(255,255,255,.85);box-shadow:0 2px 6px rgba(0,0,0,.5);transition:transform .15s;transform-origin:center;"></div>`;
+}
+
+function starMarkup(size) {
+  // Inline SVG star — drop shadow + white stroke so it pops against land/ocean.
+  return `<svg viewBox="0 0 24 24" width="${size}" height="${size}" style="display:block;filter:drop-shadow(0 2px 4px rgba(0,0,0,.55));transition:transform .15s;transform-origin:center;"><path d="M12 2.5l2.95 6 6.6.96-4.78 4.66 1.13 6.58L12 17.6l-5.9 3.1 1.13-6.58L2.45 9.46l6.6-.96L12 2.5z" fill="#f5c542" stroke="rgba(255,255,255,.9)" stroke-width="1.2" stroke-linejoin="round"/></svg>`;
+}
+
+function logoMarkup(src, size) {
+  return `<img src="${src}" alt="" width="${size}" height="${size}" style="display:block;width:${size}px;height:${size}px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.55));transition:transform .15s;transform-origin:center;" />`;
+}
 
 function buildPinElement(city, onClick) {
   // react-globe.gl writes `transform` on this wrapper every frame to
   // position the pin — do NOT mutate transform/opacity here.
   const wrap = document.createElement("div");
-  wrap.style.cssText = `width:${PIN_SIZE}px;height:${PIN_SIZE}px;cursor:pointer;pointer-events:auto;`;
 
-  const dot = document.createElement("div");
-  dot.style.cssText = `width:100%;height:100%;border-radius:50%;background:#000;border:2px solid rgba(255,255,255,.85);box-shadow:0 2px 6px rgba(0,0,0,.5);transition:transform .15s;transform-origin:center;`;
-  wrap.appendChild(dot);
+  let innerHTML;
+  let size = PIN_SIZE;
+  if (LOGO_IDS.has(city.id)) {
+    size = LOGO_SIZE;
+    innerHTML = logoMarkup(MICHIGAN_M_SRC, size);
+  } else if (HOME_IDS.has(city.id)) {
+    size = HOME_SIZE;
+    innerHTML = starMarkup(size);
+  } else if (TRAVEL_IDS.has(city.id)) {
+    innerHTML = dotMarkup("#1e90ff", size);
+  } else if (PROFESSIONAL_IDS.has(city.id)) {
+    innerHTML = dotMarkup("#000", size);
+  } else {
+    innerHTML = dotMarkup("#000", size);
+  }
+
+  wrap.style.cssText = `width:${size}px;height:${size}px;cursor:pointer;pointer-events:auto;`;
+  wrap.innerHTML = innerHTML;
+  const marker = wrap.firstElementChild;
 
   wrap.addEventListener("mouseenter", () => {
-    dot.style.transform = "scale(1.25)";
+    if (marker) marker.style.transform = "scale(1.25)";
   });
   wrap.addEventListener("mouseleave", () => {
-    dot.style.transform = "scale(1)";
+    if (marker) marker.style.transform = "scale(1)";
   });
   wrap.addEventListener("click", (e) => {
     e.stopPropagation();
