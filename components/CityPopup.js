@@ -126,7 +126,7 @@ function ImageBlock({ src, alt, caption }) {
   );
 }
 
-function LinkCardBlock({
+export function LinkCardBlock({
   href,
   eyebrow,
   eyebrowColor = "#ff8c5a",
